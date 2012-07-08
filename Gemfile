@@ -14,6 +14,7 @@ gem "coffee-script"
 group :development do
   gem "pry"
   gem "shotgun"
+  gem "heroku"
 end
 
 group :test do
