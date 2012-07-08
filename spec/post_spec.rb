@@ -68,4 +68,12 @@ describe Post do
       it { should be_false }
     end
   end
+
+  describe "#cache_key" do
+    subject { post.cache_key }
+
+    it "is the sha1 of the body" do
+      should == Digest::SHA1.hexdigest(post.body)
+    end
+  end
 end

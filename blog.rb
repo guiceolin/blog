@@ -29,13 +29,28 @@ class Blog < Sinatra::Base
   use CoffeeHandler
   use SassHandler
 
+  configure :development do
+    use Rack::Cache, :verbose => true
+
+  end
+
+  configure :production do
+    use Rack::Cache, :metastore   => Dalli::Client.new(ENV["MEMCACHE_URL"], :username => ENV["MEMCACHE_USERNAME"], :password => ENV["MEMCACHE_PASSWORD"]),
+                     :entitystore => "file:tmp/cache/rack/body"
+  end
+
   get "/" do
+    cache_control :public, :max_age => 60
     erb :index, :locals => { :posts => Post.all }
   end
 
   get "/:year/:month/:day/:slug" do
     post = Post.find_by_slug(params[:slug]) or raise Sinatra::NotFound
     raise Sinatra::NotFound unless post.published?
+
+    cache_control :public, :max_age => 60
+    etag post.cache_key
+
     erb :post, :locals => { :post => post }
   end
 

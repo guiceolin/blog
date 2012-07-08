@@ -1,4 +1,5 @@
 require "date"
+require "digest/sha1"
 
 class Post
   extend Enumerable
@@ -48,5 +49,9 @@ class Post
 
   def published?
     !!@date
+  end
+
+  def cache_key
+    Digest::SHA1.hexdigest body
   end
 end

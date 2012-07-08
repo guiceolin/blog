@@ -2,6 +2,7 @@ source :rubygems
 
 gem "foreman"
 gem "sinatra"
+gem "rack-cache"
 gem "redcarpet"
 gem "pygments.rb"
 gem "babosa"
@@ -19,4 +20,8 @@ end
 
 group :test do
   gem "rspec"
+end
+
+group :production do
+  gem "dalli"
 end
