@@ -6,6 +6,10 @@ class MarkdownRenderer < Redcarpet::Render::HTML
   end
 
   def block_code(code, language)
-    Pygments.highlight code, :lexer => language, :options => { :encoding => "utf-8" }
+    begin
+      Pygments.highlight code, :lexer => language, :options => { :encoding => "utf-8" }
+    rescue
+      Net::HTTP.post_form(URI.parse("http://pygments.appspot.com/"), "code" => code, "lang" => language).body
+    end
   end
 end
