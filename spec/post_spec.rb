@@ -46,6 +46,26 @@ describe Post do
 
   describe "#path" do
     subject { post.path }
+
     it { should == "/2010/10/10/title" }
+
+    context "when the post has no date" do
+      before { post.date = nil }
+      it { should == "/draft/title" }
+    end
+  end
+
+  describe "#published?" do
+    subject { post.published? }
+
+    context "when the post has a date" do
+      before { post.date = Date.today }
+      it { should be_true }
+    end
+
+    context "when the post has no date" do
+      before { post.date = nil }
+      it { should be_false }
+    end
   end
 end

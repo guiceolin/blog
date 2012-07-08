@@ -16,11 +16,15 @@ class Post
   end
 
   def self.all
-    find_all.sort_by(&:date).reverse
+    published.sort_by(&:date).reverse
   end
 
   def self.find_by_slug(slug)
     find { |post| post.slug == slug }
+  end
+
+  def self.published
+    find_all(&:published?)
   end
 
   def initialize(data)
@@ -39,6 +43,10 @@ class Post
   end
 
   def path
-    @path ||= date.strftime("/%Y/%m/%d/#{slug}")
+    @path ||= published?? date.strftime("/%Y/%m/%d/#{slug}") : "/draft/#{slug}"
+  end
+
+  def published?
+    !!@date
   end
 end
