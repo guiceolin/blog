@@ -85,7 +85,7 @@ setInterval 1000 / 60, infiniteLoop
 # for more information on how to use it.
 ```
 
-No exemplo acima, apesar de simples, é bem evidente dois conceitos cruciais que servirão de base para __todas__ as simulações físicas que você irá fazer:
+Apesar de simples, o exemplo é interessante porque deixa bem evidente dois conceitos cruciais que servirão de base para __todas__ as simulações físicas que envolvam movimento:
 
 * __Posição__: as propriedades `x` e `y` do círculo
 * __Velocidade__: a quantidade de pixels que a _posição_ será alterada a cada iteração do loop, representadas pelas variáveis `xSpeed` e `ySpeed`
@@ -124,7 +124,7 @@ Vetores são, resumidamente, a **diferença entre dois pontos**. Relembrando o q
 
 Por conta disso podemos afirmar que nossa **velocidade** é um vetor, já que ela descreve a diferença entre dois pontos: o ponto atual do objeto, e o ponto que o objeto vai estar após a iteração.
 
-Mas agora você pode se perguntar, e a **posição**? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. Bom, esse é um assunto um bem debatido, tanto que algumas linguagens (como por exemplo o _Java_) tem classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a **diferença entre a origem (0, 0) para a posição atual**, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Com isso, para simplificar as coisas, vamos também seguir esse padrão.
+Mas agora você pode se perguntar, e a **posição**? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. Esse é um assunto bem debatido, tanto que algumas linguagens (como por exemplo o _Java_) tem classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar as coisas, vamos também seguir esse padrão.
 
 Mas voltando ao exemplo, tinhamos:
 
@@ -168,11 +168,11 @@ Infelizmente como estamos trabalhado com javascript nos exemplos, você já deve
 
 ### Somando vetores
 
-Bom, já temos uma primeira versão da nossa classe `Vector` que basicamente é uma estrutura que possui os componentes `x` e `y`. Agora teremos que implementar um método nessa classe que irá somar um vetor a uma instância dela. Mas antes, é importante entender o que significa somar dois vetores. Para isso, vamos primeiro nos familiarizar com algumas notações matemáticas usadas para representar vetores.
+Já temos uma primeira versão da nossa classe `Vector` que basicamente é uma estrutura que possui as propriedades `x` e `y`. Agora teremos que implementar um método nessa classe que irá somar essas propriedades com as propriedades de um outro vetor. Mas antes, é importante entender exatamente o que significa somar dois vetores. Para isso, vamos primeiro nos familiarizar com algumas notações matemáticas usadas para representar vetores.
 
-Vetores normalmente são representados com as letras em negrito e/ou com uma seta em cima do seu nome. Para facilitar a escrita, vamos utilizar apenas as letras em negrito para diferenciar um vetor de um escalar (escalar se refere a um valor inteiro ou decimal, como a posição x e y):
+Vetores normalmente são representados com as letras em negrito e/ou com uma seta em cima do seu nome. Para facilitar a escrita, vamos utilizar apenas as letras em negrito para diferenciar um __vetor__ de um escalar (escalar se refere a um valor inteiro ou decimal, como as propriedades `x` e `y`).
 
-Com isso em mente, vamos finalmente entender como funciona a soma de vetores. Já sabemos que cada vetor tem dois componentes, um `x` e um `y`. Para somar um vetor com outro, basta somar os componentes `x` e `y` de ambos.
+Com isso claro, vamos finalmente entender como funciona a soma de vetores. Já sabemos que cada vetor tem duas propriedades: um `x` e um `y`. Para somar um vetor com outro, basta somar as propriedades `x` e `y` de ambos.
 
 Para ficar mais claro, supondo que temos os vetores __a__ e __b__:
 
@@ -222,16 +222,16 @@ class Ball
     @position.add(@velocity)
 
   checkBounds: (area) ->
-    # Of course we can read/write the x and y components of a vector
+    # Of course we can access the x and y properties of a vector directly
     @velocity.x *= -1 if @position.x > area.width  or @position.x < 0
     @velocity.y *= -1 if @position.y > area.height or @position.y < 0
 
   draw: (context) ->
-    # As the canvas API doesn't support passing vectors as arguments, we must inform the x and y scalars
+    # As the canvas API doesn't support passing vectors as arguments, so we must inform the x and y scalars
     context.fillCircle @position.x, @position.y, @radius
 ```
 
-Você deve estar nesse momento pensando: "espere aí, é só isso? Fizemos tudo isso e o código não mudou quase nada!". De fato, vetor não é a solução mágica que irá fazer com que você consiga implementar qualquer fenomeno físico da natureza facilmente. É importante entender que isso ainda não é o suficiente para que você entenda o _poder_ de organizar (e pensar) usando vetores. Nos próximos exemplos, vamos abordar algumas situações mais complexas que talvez deixe isso mais claro, mas por hora, vamos continuar com alguns outros conceitos básicos.
+Você deve estar nesse momento pensando: "espere aí, é só isso? Fizemos tudo isso e o código não mudou quase nada!". De fato, utilizar vetores não irá magicamente fazer que seus programas simulem perfeitamente conceitos físicos. É importante entender que isso ainda não é o suficiente para que você entenda o _poder_ de organizar (e pensar) usando vetores. Nos próximos exemplos, vamos abordar algumas situações mais complexas que talvez deixe isso mais claro, mas por hora, vamos continuar com alguns outros conceitos básicos.
 
 ### Subtraindo, multiplicando e dividindo vetores
 
@@ -581,7 +581,7 @@ E como um último exemplo, vamos implementar o código acima utilizando vários 
 class Ball
   MAX_SPEED = 10
 
-  constructor: (@x, @y) ->
+  constructor: (x, y) ->
     @position = new Vector x, y
     @velocity = new Vector 0, 0
     @radius = 10
@@ -603,10 +603,11 @@ class Ball
 canvas  = getElementById("canvas")
 context = canvas.getContext("2d")
 
+random = (min, max) -> Math.random() * (max - min) + min
+
 balls = []
 for index in [1..10]
-  # We could add a random position here, using sin and cos just for coolness ;)
-  balls.push new Ball(Math.cos(index), Math.sin(index)) 
+  balls.push new Ball(random(0, canvas.width), random(0, canvas.height))
 
 mouse = new Vector 0, 0
 

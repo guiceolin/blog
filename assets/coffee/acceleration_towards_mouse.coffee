@@ -29,8 +29,11 @@ class Example
     @canvas  = $("<canvas width='#{width}' height='#{height}'></canvas>").appendTo($(container))[0]
     @context = @canvas.getContext("2d")
 
+    random = (min, max) -> Math.random() * (max - min) + min
+
     @balls = []
-    @balls.push new Ball(Math.cos(index), Math.sin(index)) for index in [1..10]
+    for index in [1..10]
+      @balls.push new Ball(random(0, @canvas.width), random(0, @canvas.height))
 
     @mouse = new Vector 0, 0
 
