@@ -43,24 +43,24 @@ Como o primeiro exemplo, vamos criar um dos cenário mais comuns em tutoriais de
 class Ball
   constructor: (@x, @y) ->
     # Setting some random velocities here
-    @xSpeed = 3
-    @ySpeed = 1.5
+    @xVelocity = 3
+    @yVelocity = 1.5
 
     # The size of the ball
     @radius = 10
 
-  # Increment the ball position based on its current speed
+  # Increment the ball position based on its current velocity
   update: ->
-    @x += xSpeed
-    @y += ySpeed
+    @x += xVelocity
+    @y += yVelocity
 
   # Inverts the ball velocity when it hits any of the bounds of the canvas
   checkBounds: (area) ->
     # Inverting the x velocity when the ball touches the left or right side of the screen
-    @xSpeed *= -1 if @x > area.width  or @x < 0
+    @xVelocity *= -1 if @x > area.width  or @x < 0
 
     # Inverting the y velocity when the ball touches the up or down side of the screen
-    @ySpeed *= -1 if @y > area.height or @y < 0
+    @yVelocity *= -1 if @y > area.height or @y < 0
 
   # Draw the ball on the screen
   draw: (context) ->
@@ -88,7 +88,7 @@ setInterval 1000 / 60, infiniteLoop
 Apesar de simples, o exemplo é interessante porque deixa bem evidente dois conceitos cruciais que servirão de base para __todas__ as simulações físicas que envolvam movimento:
 
 * __Posição__: as propriedades `x` e `y` do círculo
-* __Velocidade__: a quantidade de pixels que a _posição_ será alterada a cada iteração do loop, representadas pelas variáveis `xSpeed` e `ySpeed`
+* __Velocidade__: a quantidade de pixels que a _posição_ será alterada a cada iteração do loop, representadas pelas variáveis `xVelocity` e `yVelocity`
 
 Claro que a medida que vamos refinando nossas simulações, vamos adicionando mais conceitos físicos. Por exemplo, nosso exemplo poderia ter também:
 
@@ -103,15 +103,15 @@ Agora, e se pudéssmos agrupar esses valores em algum tipo de estrutura, de modo
 ```coffeescript
 @x = 4
 @y = 8
-@xSpeed = 1.5
-@ySpeed = 3
+@xVelocity = 1.5
+@yVelocity = 3
 ```
 
 Escrevessemos dessa?
 
 ```coffeescript
 @position = new Vector(4, 8)
-@speed    = new Vector(1, 3)
+@velocity = new Vector(1, 3)
 ```
 
 Sim, acabamos de escrever nossos dois primeiros vetores, que até então não parecem trazer muitas vantagens, mas não se preucupe, isso é só o começo.
@@ -120,7 +120,7 @@ Sim, acabamos de escrever nossos dois primeiros vetores, que até então não pa
 
 Vetores são, resumidamente, a **diferença entre dois pontos**. Relembrando o que foi dito sobre o exemplo anterior, nós estamos alterando a posição do círculo a cada iteração por um número de pixels horizontais e um número de pixels verticais (foi o que chamamos de **velocidade**), que no caso se traduz para:
 
-`position = position + speed`
+`position = position + velocity`
 
 Por conta disso podemos afirmar que nossa **velocidade** é um vetor, já que ela descreve a diferença entre dois pontos: o ponto atual do objeto, e o ponto que o objeto vai estar após a iteração.
 
@@ -130,7 +130,7 @@ Mas voltando ao exemplo, tinhamos:
 
 ```coffeescript
 position = x, y
-velocity = xSpeed, ySpeed
+velocity = xVelocity, yVelocity
 ```
 
 Vamos criar nossa classe `Vector` que irá armazenar esses valores:
@@ -148,20 +148,20 @@ E reescrever a classe `Ball` para tratar sua posição e sua velocidade como doi
 class Ball
   constructor: (x, y) ->
     @position = new Vector(x, y)
-    @speed    = new Vector(3, 1.5)
+    @velocity = new Vector(3, 1.5)
 ```
 
 Com isso, podemos finalmente implementar nosso algorítimo de movimento usando vetores! Apenas relembrando, na implementação original nós tinhamos:
 
 ```coffeescript
-@x += xSpeed
-@y += ySpeed
+@x += xVelocity
+@y += yVelocity
 ```
 
 E o que gostaríamos de fazer agora seria:
 
 ```coffeescript
-@position = @position + @speed
+@position = @position + @velocity
 ```
 
 Infelizmente como estamos trabalhado com javascript nos exemplos, você já deve saber que essa sintaxe não é permitida pela linguagem, já que não podemos implementar uma função de soma de dois objetos da classe `Vector` utilizando o simbolo `+` (na verdade, a única linguagem que conheço que permitiria tal sintaxe é o _Ruby_). Isso quer dizer que o _javascript_ não sabe como _somar_ dois vetores como ele sabe como _somar_ dois inteiros ou até mesmo _"somar"_ duas strings utilizando o operador `+`, logo, a única opção é fazer isso por nossa conta utilizando uma sintaxe um pouco diferente.
@@ -408,7 +408,7 @@ class Ball
     @position = new Vector x, y
 
     # Let's start with no velocity at all
-    @speed = new Vector 0, 0
+    @velocity = new Vector 0, 0
 
     # NEW acceleration property
     @acceleration = new Vector(0.005, 0.01)

@@ -1,24 +1,24 @@
 class Ball
   constructor: (@x, @y) ->
     # Setting some random velocities here
-    @xSpeed = 8
-    @ySpeed = 3
+    @xVelocity = 8
+    @yVelocity = 3
 
     # The size of the ball
     @radius = 10
 
-  # Increment the ball position based on its current speed
+  # Increment the ball position based on its current velocity
   update: ->
-    @x += @xSpeed
-    @y += @ySpeed
+    @x += @xVelocity
+    @y += @yVelocity
 
   # Rebounds the ball when it hits any of the bounds of the canvas
   checkBounds: (area) ->
     # Inverting the x velocity when the ball touches the left or right side of the screen
-    @xSpeed *= -1 if @x + @radius > area.width  or @x - @radius < 0
+    @xVelocity *= -1 if @x + @radius > area.width  or @x - @radius < 0
 
     # Inverting the y velocity when the ball touches the up or down side of the screen
-    @ySpeed *= -1 if @y + @radius > area.height or @y - @radius < 0
+    @yVelocity *= -1 if @y + @radius > area.height or @y - @radius < 0
 
   draw: (context) ->
     # Draws the ball on the screen
