@@ -1,11 +1,7 @@
 title: Vetores
 author: Rodrigo Navarro
 
-Em geral, existem duas maneiras que eu vejo que as pessoas entram nesse mundo:
-1 - Fazendo do jeito mais amador, rápido e funcional possível. É o "sair fazendo", e isso inclui pesquisas no google, um monte de copy/paste e assim que seu código começa a crescer, vc vai notar o inferno que tudo isso virou. Além do mais, no próximo projeto, vc ainda irá sofrer, já que vc não "aprendeu" muita coisa.
-2 - Como a popularidade do mundo opensource, hoje é possível encontrar bibliotecas de física impressionantes muito facilmente, e o melhor: de graça. Isso obviamente atrai os olhos de qualquer um. O problema é que assim como a Maneira 1, saber usar essas bibliotecas leva tempo, e se novamente vc não souber os conceitos por detrás desse "mundo simulado", o resultado será semelhante.
-
-Indepentente das maneiras que vc escolheu começar, você acabará tendo o mesmo problema: você não conhece os conceitos básicos necessários para uma compreensão do "wtf is going on" do seu código. Se você não sabe o que é uma força, uma aceleração, não sabe como funcionam os vetores e nem como usá-los, por mais que você tente, você sempre irá ter muito mais dificuldade de entender e manter seu código.
+[Reescrever introdução]
 
 # Vetores
 
