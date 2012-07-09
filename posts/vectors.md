@@ -501,7 +501,7 @@ Começando pela direção, o que precisamos é montar um vetor que vai da posiç
 direction = Vector.sub @mouse, @position
 ```
 
-Com isso criamos nosso vetor `direction` que aponta da posição do objeto até o ponteiro do mouse. Agora muito cuidado: se utilizassemos esse vetor como aceleração, nosso objeto iria aparecer no ponteiro do mouse instantaneamente. Talvez isso seja útil em alguma simulação, mas para nosso caso, queremos limitar o quão rápido o nosso objeto irá em direção ao mouse, ou seja, nós queremos limitar a _magnitude_ desse vetor.
+Com isso criamos nosso vetor `direction` que aponta da posição do objeto até o ponteiro do mouse. Agora muito cuidado: se utilizássemos esse vetor como aceleração, nosso objeto iria aparecer no ponteiro do mouse instantaneamente. Talvez isso seja útil em alguma simulação, mas para nosso caso, queremos limitar o quão rápido o nosso objeto irá em direção ao mouse, ou seja, nós queremos limitar a _magnitude_ desse vetor.
 
 Para limitar a magnitude, vamos primeiro _normalizar_ nosso vetor (que lembrando irá manter sua direção, mas irá fixar sua magnitude ao valor `1`) e então podemos facilmente aumentar o diminuir esse vetor por um determinado valor.
 
