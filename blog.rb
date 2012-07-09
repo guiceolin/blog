@@ -55,7 +55,7 @@ class Blog < Sinatra::Base
   end
 
   get "/draft/:slug" do
-    protected!
+    protected! if ENV["RACK_ENV"] == "production"
     post = Post.find_by_slug(params[:slug]) or raise Sinatra::NotFound
     erb :post, :locals =>  { :post => post }
   end
