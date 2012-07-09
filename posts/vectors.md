@@ -94,7 +94,7 @@ Claro que a medida que vamos refinando nossas simulações, vamos adicionando ma
 
 Podemos observar algo em comum em todas essas propriedades (gravidade, vento, etc): sempre precisamos de dois valores para representa-los, um `x` e um `y`. Isso acontece porque estamos trabalhando num contexto 2D, se a nossa simulação fosse em 3D, notaríamos que iríamos precisar de ainda mais um valor, que seria referente ao eixo `z`.
 
-Agora, e se pudéssmos agrupar esses valores em algum tipo de estrutura, de modo simplificar (e generalizar) o processo? Afinal, não ficaria mais organizado se ao invés de escrever dessa maneira:
+Agora, e se pudéssemos agrupar esses valores em algum tipo de estrutura, de modo simplificar (e generalizar) o processo? Afinal, não ficaria mais organizado se ao invés de escrever dessa maneira:
 
 ```coffeescript
 @x = 4
@@ -103,14 +103,14 @@ Agora, e se pudéssmos agrupar esses valores em algum tipo de estrutura, de modo
 @yVelocity = 3
 ```
 
-Escrevessemos dessa?
+Escrevêssemos dessa?
 
 ```coffeescript
 @position = new Vector(4, 8)
 @velocity = new Vector(1, 3)
 ```
 
-Sim, acabamos de escrever nossos dois primeiros vetores, que até então não parecem trazer muitas vantagens, mas não se preucupe, isso é só o começo.
+Sim, acabamos de escrever nossos dois primeiros vetores, que até então não parecem trazer muitas vantagens, mas não se preocupe, isso é só o começo.
 
 ## Meet the Vector
 
@@ -122,7 +122,7 @@ Por conta disso podemos afirmar que nossa **velocidade** é um vetor, já que el
 
 Mas agora você pode se perguntar, e a **posição**? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. Esse é um assunto bem debatido, tanto que algumas linguagens (como por exemplo o _Java_) tem classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar as coisas, vamos também seguir esse padrão.
 
-Mas voltando ao exemplo, tinhamos:
+Mas voltando ao exemplo, tínhamos:
 
 ```coffeescript
 position = x, y
@@ -147,7 +147,7 @@ class Ball
     @velocity = new Vector(3, 1.5)
 ```
 
-Com isso, podemos finalmente implementar nosso algorítimo de movimento usando vetores! Apenas relembrando, na implementação original nós tinhamos:
+Com isso, podemos finalmente implementar nosso algorítimo de movimento usando vetores! Apenas relembrando, na implementação original nós tínhamos:
 
 ```coffeescript
 @x += xVelocity
@@ -233,7 +233,7 @@ Você deve estar nesse momento pensando: "espere aí, é só isso? Fizemos tudo 
 
 Como você já imaginava, soma não é a única operação realizada com vetores. Na verdade, além das básicas (soma, subtração, divisão e multiplicação) existem ainda diversas outras (veja por exemplo, os métodos da classe Vector2D do java). Por hora, vamos abordar apenas as principais.
 
-Comçando pela subtração, que é algo bem óbvio já que acabamos de fazer a soma, basta trocarmos o operador. Então sem muitas delongas, vamos implementar o método na nossa classe:
+Começando pela subtração, que é algo bem óbvio já que acabamos de fazer a soma, basta trocarmos o operador. Então sem muitas delongas, vamos implementar o método na nossa classe:
 
 ```coffeescript
 class Vector
@@ -272,7 +272,7 @@ b = new Vector(2, 2)
 c = a.sub(b)
 ```
 
-Deve ficar claro que isso __não irá funcionar como o esperado__. O que esse código faz na realidade é alterar o valor do vetor `a` para (3, 3), e não retornar um novo vetor com esse valor para ser atribuido a `c`. Sendo assim, em vários casos é útil poder executar uma operação e retornar o resultado em outro vetor, para isso, vamos ter que criar método _estáticos_ na nossa classe `Vector` com nossas já conhecidas operações básicas.
+Deve ficar claro que isso __não irá funcionar como o esperado__. O que esse código faz na realidade é alterar o valor do vetor `a` para (3, 3), e não retornar um novo vetor com esse valor para ser atribuído a `c`. Sendo assim, em vários casos é útil poder executar uma operação e retornar o resultado em outro vetor, para isso, vamos ter que criar método _estáticos_ na nossa classe `Vector` com nossas já conhecidas operações básicas.
 
 ```coffeescript
 class Vector
@@ -296,49 +296,15 @@ a = new Vector(5, 5)
 b = new Vector(2, 2)
 c = Vector.sub(a, b)
 ```
-
-E para finalizar a parte de operaçõas, vai um exemplo básico demonstrando as três últimas em ação:
-
-<div id="line_divided"></div>
-
-```coffeescript
-canvas  = getElementById("example02")
-context = canvas.getContext("2d")
-
-mouse  = new Vector(0, 0)
-center = new Vector(canvas.width / 2, canvas.height / 2)
-
-canvas.onmousemove = (event) -> [mouse.x, mouse.y] = [event.offsetX, event.offsetY]
-
-infiniteLoop =->
-  target = Vector.sub mouse, center
-
-  # Let's scale the line to half of its size
-  target.div(2)
-
-  context.translate center.x, center.y
-  context.lineTo target.x, target.y
-
-setInterval 1000 / 60, infiniteLoop
-```
-
-<script type="text/javascript" src="/vector.js"></script> <script type="text/javascript" src="/coffee/line_sub_and_div.js"></script>
-<script type="text/javascript">
-  jQuery(function($){
-    //var example = new LineSubAndDiv();
-    //example.start();
-  });
-</script>
-
-Com isso concluimos as operações básicas. Mas ainda não é tudo (nem perto disso). Na verdade, conhecer esses conceitos abrem portas para entender outras importantes propriedades e funções de um vetor.
+Com isso concluímos as operações básicas. Mas ainda não é tudo (nem perto disso). Na verdade, conhecer esses conceitos abrem portas para entender outras importantes propriedades e funções de um vetor.
 
 ### Magnitude
 
-Como vimos na multiplicação de divisão dos vetores, já sabemos que é possível aumentar-los e diminui-los. Mas e se quisermos saber qual o _tamanho_ exato de um vetor? Como você já deve ter notado, todo o vetor se parece com um triangulo retangulo quando juntarmos seus pontos:
+Como vimos na multiplicação de divisão dos vetores, já sabemos que é possível aumentar-los e diminui-los. Mas e se quisermos saber qual o _tamanho_ exato de um vetor? Como você já deve ter notado, todo o vetor se parece com um triangulo retângulo quando juntarmos seus pontos:
 
 [ilustração de um vetor]
 
-O fato é: ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retangulo. Com isso, vamos voltar a nosso colegial e relembrar do _temorema de Pitagoras_, que utilizaremos para descobrir a hipotenusa do triângulo, que nada mais é do seu _tamanho_, ou, no notação mais correta, sua __magnitude__.
+O fato é: ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Com isso, vamos voltar a nosso colegial e relembrar do _temorema de Pitagoras_, que utilizaremos para descobrir a hipotenusa do triângulo, que nada mais é do seu _tamanho_, ou, no notação mais correta, sua __magnitude__.
 
 [ilustração da regra de pytagoras]
 
@@ -396,7 +362,7 @@ Como é possível notar, podemos alterar tanto a posição e a velocidade atrav�
 
 ### Aceleração constante
 
-Sem dúvida o algorítmo mais simples e básico de aceleração, onde o objeto irá ganhar velocidade gradualmente. Para isso, vamos voltar ao nosso exemplo dos círculos:
+Sem dúvida o algoritmo mais simples e básico de aceleração, onde o objeto irá ganhar velocidade gradualmente. Para isso, vamos voltar ao nosso exemplo dos círculos:
 
 ```coffeescript
 class Ball
@@ -410,7 +376,7 @@ class Ball
     @acceleration = new Vector(0.005, 0.01)
 ```
 
-Como podemos notar, por enquanto as únicas modificações feitas foram zerar a velocidade e adicionar uma nova propriedade para a aceleração. Note também que a aceleração tem valores _muito_ pequenos, isso é necessário porque devemos lembrar que a cada iteração do nosso loop infinito, iremos somar esses valores na velocidade do círculo, e como temos 60 itereções desse loop por segundo, você já pode imaginar o que aconteceria que se o valor for muito grande...
+Como podemos notar, por enquanto as únicas modificações feitas foram zerar a velocidade e adicionar uma nova propriedade para a aceleração. Note também que a aceleração tem valores _muito_ pequenos, isso é necessário porque devemos lembrar que a cada iteração do nosso loop infinito, iremos somar esses valores na velocidade do círculo, e como temos 60 iterações desse loop por segundo, você já pode imaginar o que aconteceria que se o valor for muito grande...
 
 Mas continuando, agora vamos alterar o método `update` para adicionar aceleração a nossa velocidade:
 
@@ -441,7 +407,7 @@ update: ->
   @position.add @velocity
 ```
 
-Uma última modificação que faremos para que seja possível visualizar melhor o efeito de aceleração constante será que ao invés dos círculos rebaterem nas bordas, iremos transporta-los para o outro lado. Algo como no jogo _Asteroids_. Para isso, basta alterar o método check bounds:
+Uma última modificação que faremos para que seja possível visualizar melhor o efeito de aceleração constante será que ao invés dos círculos rebaterem nas bordas, iremos transporta-los para o outro lado. Algo como no jogo _Asteroids_. Para isso, basta alterar o método `checkBounds`:
 
 ```coffeescript
 checkBounds: (area) ->
@@ -486,7 +452,7 @@ update: ->
   @position.add @velocity
 ```
 
-Apesar de não ser necessário normalizar a aceleração, isso torna a implementação mais flexivel para atender nosso dois casos, já que podemos:
+Apesar de não ser necessário normalizar a aceleração, isso torna a implementação mais flexível para atender nosso dois casos, já que podemos:
 
 * escalar a aceleração para um valor constante
 
