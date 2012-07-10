@@ -6,7 +6,7 @@ author: Rodrigo Navarro
 
 # A base de tudo
 
-Se existe algo que serve base para qualquer simulação física que envolva movimento, essa base são os _vetores_. Qualquer _engine_ ou artigo sério no assunto não só fará um uso extenso deles, como também assumirá um prévio conhecimento em cálculos vetoriais. Agora, é preciso deixar claro que quando eu digo vetores eu _não_ estou falando de vetores como coleção de valores (os _arrays_), ou de _desenhos vetoriais_. Na verdade, __vetor__ tem várias definições, e a que iremos ver nesse artigo é essa (tirado da wikipedia):
+Se existe algo que serve base para qualquer simulação física que envolva movimento, essa base é o _vetor_. Qualquer _engine_ ou artigo sério no assunto não só fará um uso extenso deles, como também assumirá um prévio conhecimento em cálculos vetoriais. Agora, é preciso deixar claro que quando eu digo vetores eu _não_ estou falando de vetores como coleção de valores (os _arrays_), ou de _desenhos vetoriais_. Na verdade, __vetor__ tem várias definições, e a que iremos ver nesse artigo é essa (tirado da wikipedia):
 
 > Um conjunto de elementos geométricos, denominados segmentos de reta orientados, que possuem todos a mesma intensidade (denominada norma ou módulo), mesma direção e mesmo sentido.
 
