@@ -22,6 +22,7 @@ Além disso, muitos dos códigos na página serão uma versão um pouco simplifi
 ## O _hello world_ das simulações físicas
 
 <script type="text/javascript" src="/coffee/request_animation_frame.js"></script>
+<script type="text/javascript" src="/vector.js"></script>
 
 <script type="text/javascript" src="/coffee/bouncing_balls_without_vectors.js"></script>
 <script type="text/javascript">
@@ -231,7 +232,7 @@ Você deve estar nesse momento pensando: "espere aí, é só isso? Fizemos tudo 
 
 ### Subtraindo, multiplicando e dividindo vetores
 
-Como você já imaginava, soma não é a única operação realizada com vetores. Na verdade, além das básicas (soma, subtração, divisão e multiplicação) existem ainda diversas outras (veja por exemplo, os métodos da classe Vector2D do java). Por hora, vamos abordar apenas as principais.
+Como você já imaginava, soma não é a única operação realizada com vetores. Na verdade, além das básicas (soma, subtração, divisão e multiplicação) existem ainda diversas outras (veja por exemplo, os métodos da classe [Vector2d](http://docs.oracle.com/cd/E17802_01/j2se/javase/technologies/desktop/java3d/forDevelopers/j3dapi/javax/vecmath/Vector2d.html) do java). Por hora, vamos abordar apenas as principais.
 
 Começando pela subtração, que é algo bem óbvio já que acabamos de fazer a soma, basta trocarmos o operador. Então sem muitas delongas, vamos implementar o método na nossa classe:
 
@@ -338,9 +339,9 @@ class Vector
 
 ## Programando movimento com vetores
 
-Até agora só vimos os conceitos básicos de vetores mas não fizemos nada prático que realmente justifique o uso deles. Por isso, é possível que vetores continuem parecendo inúteis. A verdade é que leva um tempo para se notar o quanto importante é saber utiliza-los, mas mesmo assim, isso vai mudar um pouco de agora em diante, já que iremos explorar alguns casos um pouco mais complexos.
+Até agora só vimos os conceitos básicos de vetores mas não fizemos nada prático que realmente justifique o uso deles. Por isso, é possível que vetores continuem parecendo pouco úteis. A verdade é que leva um tempo para se notar o quanto importante é saber utiliza-los, mas mesmo assim, isso vai mudar um pouco de agora em diante, já que iremos explorar alguns casos um pouco mais complexos.
 
-Para começar, vamos ver algo vastamente utilizado em qualquer simulação física: __aceleração__.
+Para começar, vamos ver algo muito utilizado em qualquer simulação física: __aceleração__.
 
 Como já vimos, __velocidade__ é a quantidade de variação de posição. A __aceleração__ é a quantidade de variação de __velocidade__. Então podemos dizer que a _aceleração_ afeta a _velocidade_ e essa por sua vez afeta a _posição_. 
 
@@ -595,10 +596,10 @@ Por hora, espero que tenha ficado claro as vantagens do uso de vetores em simula
 
 ### Agradecimentos
 
-Muitas partes e exemplos desse artigo não foram só baseadas como quase transcritas de livros e tutoriais do Douglas Shiffman e do Craig Reynolds. Todos os créditos devem ser dados a eles.
+Muitas partes e exemplos desse artigo não foram só baseadas como quase transcritos de livros e tutoriais produzidos por [Douglas Shiffman](http://www.shiffman.net) e pelo [Craig Reynolds](http://www.red3d.com/cwr). Portanto, todos os créditos devem ser dados a eles.
 
 ### Opensource
 
-A classe `Vector` que criamos nesse artigo foi extraída para uma biblioteca a parte, desta forma quando precisar fazer calculos de vetores em javascript, basta inclui-la em seu projeto. Ela já dá suporte também a vetores `3D`, coisa que não fizemos aqui. O projeto se chama Vector.js e pode ser encontrado [nesse repositório no github](http://github.com/reu/vector.js).
+A classe `Vector` que criamos nesse artigo pode ser encontrada para download em seu [próprio repositório no github](http://github.com/reu/vector.js), desta forma quando precisar fazer calculos de vetores em javascript, basta inclui-la em seu projeto. Ela também dá suporte a vetores `3D`, coisa que não fizemos aqui.
 
-Outra biblioteca usada nos exemplos é o canvas-extensions, que coloca alguns métodos úteis no `context` do `canvas` do HTML5 (como por exemplo, o método `fillCircle`). Assim como o anterior, esse projeto tem seu próprio [repositório no github](https://github.com/reu/canvas-extensions).
+Outra biblioteca usada nos exemplos é o [canvas-extensions](https://github.com/reu/canvas-extensions), que coloca alguns métodos úteis no `context` do `canvas` do HTML5 (como por exemplo, o método `fillCircle`).
