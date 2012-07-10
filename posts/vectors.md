@@ -17,7 +17,7 @@ Mas antes de entender exatamente _o que_ eles são, é interessante entender o _
 
 Todos os códigos serão demonstrados usando [Coffeescript](http://coffeescript.org/). Se você ainda não conhece essa linguagem, vale uma rápida consulta na documentação para se familiarizar com a sintaxe. Basicamente é uma forma ~~menos sofrida~~ mais elegante de se escrever Javascript.
 
-Além disso, muitos dos códigos na página serão uma versão um pouco simplificada da implementação em si. Por exemplo, não será detalhado a parte de renderização dos objetos na tela ou a criação dos contextos do canvas do HTML na maior parte das vezes. O foco será mais nos conceitos e menos nas tecnologias em si. De qualquer forma, você pode consultar o código completo de todos os exemplos [nesse repositório no github](http://github.com/reu/blog/public/vectors/aqui).
+Além disso, muitos dos códigos na página serão uma versão um pouco simplificada da implementação em si. Por exemplo, não será detalhado a parte de renderização dos objetos na tela ou a criação dos contextos do canvas do HTML na maior parte das vezes. O foco será mais nos conceitos e menos nas tecnologias em si. De qualquer forma, você pode consultar o código completo de todos os exemplos [nesse repositório no github](http://github.com/reu/blog/assets/coffee).
 
 ## O _hello world_ das simulações físicas
 
