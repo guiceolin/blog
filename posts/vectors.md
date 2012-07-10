@@ -431,7 +431,7 @@ checkBounds: (area) ->
 
 ### Aceleração aleatória
 
-Esse segundo exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos, bem, acelerem ou desacelerem, mas tambem é usado para _qualquer_ mudança de velocidade, seja essa mudança referente a magnitude (que no caso, fará um objeto andar mais rápido ou mais devegar por exemplo), como também uma __mudança de direção__. É muito comum utilizarmos vetores para alterar a direção de objetos, na verdade, posteriormente iremos ver os algorítimos do Craig Reynolds, e todos eles seguem esse conceito.
+Esse segundo exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos, bem, acelerem ou desacelerem, mas tambem é usado para _qualquer_ mudança de velocidade, seja essa mudança referente a magnitude (que no caso, fará um objeto andar mais rápido ou mais devegar por exemplo), como também uma __mudança de direção__. É muito comum utilizarmos vetores para alterar a direção de objetos, na verdade, em artigos futuros iremos ver os [algorítimos do Craig Reynolds](http://www.red3d.com/cwr/steer/), e todos eles seguem esse conceito.
 
 Usando como base nosso último exemplo, vamos altera-lo para que a aceleração seja gerada a cada iteração, e não durante a inicialização do objeto.
 
@@ -588,7 +588,7 @@ setInterval infiniteLoop, 1000 / 60
 
 # Fechando
 
-Ainda existem (muitos) outros assuntos que podem ser abordados que utiliam vetores para simular eventos do mundo real. Por exemplo, você deve ter notado, que em nosso último exemplo os círculos não "param" quando chegam no mouse, pelo contrário, eles "_passam_" por ele e depois precisam voltar, e ficam nesse ciclo. Isso acontece porque não estamos limitando a __força__ máxima que o vetor pode acelerar. Em futuros artigos, iremos estudar vários dos algorítimos do Crayg Reynolds, e um deles é o __arrival__, que trata exatamente esse caso: um objeto que acelera até um ponto e desacelera a ponto de parar quando finalmente chega em seu destino.
+Ainda existem (muitos) outros assuntos que podem ser abordados que utiliam vetores para simular eventos do mundo real. Por exemplo, você deve ter notado, que em nosso último exemplo os círculos não "param" quando chegam no mouse, pelo contrário, eles "_passam_" por ele e depois precisam voltar, e ficam nesse ciclo. Isso acontece porque não estamos limitando a __força__ máxima que o vetor pode acelerar. Em futuros artigos, iremos estudar vários dos algorítimos do Crayg Reynolds, e um deles é o [_arrival_](http://www.red3d.com/cwr/steer/Arrival.html), que trata exatamente esse caso: um objeto que acelera até um ponto e desacelera a ponto de parar quando finalmente chega em seu destino.
 
 Outra grande vantagem que ganhamos "quase de graça" quando utilizamos vetores é a conversão para um "mundo" `3D`. Basta inicializarmos/manipularmos nossos vetores utilizando mais um eixo (convencionalmente chamado de eixo `z`) que todos os nossos cálculos irão funcionar. Converter os exemplos mostrados nessa página para `3D` é algo que chega a ser trivial, mas, fica para um próximo artigo.
 
