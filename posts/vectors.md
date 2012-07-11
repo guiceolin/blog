@@ -1,8 +1,13 @@
 title: Vetores
 author: Rodrigo Navarro
 
-[Reescrever introdução]
+_Engines físicas_ estão em alta. Com apenas um google, podemos facilmente encontrar bibliotecas que nos permitem criar simulações físicas extremamente avançadas. É impossível não se maravilhar enquanto navega pelas dezenas de exemplos dos mais variados casos que essas bibliotecas fornecem. E o melhor: além de terem suporte para uma grande variedade de linguagens, grande parte delas estão disponíveis gratuitamente, e na maior parte das vezes, até com o código fonte aberto. É como se todos os nossos problemas envolvendo físicas estivessem resolvidos!
 
+Quem dera...
+
+Infelizmente, toda essa euforia acaba no primeiro projeto real que vamos fazer usando qualquer uma dessas bibliotecas. É normal pensar: "mas é só alterar um pouco esse exemplo, e depois pegar esse outro pedaço de código do Stackoverflow, e então..." ... e então... você vai notar que nada vai funcionar do jeito como você imaginou. O exemplo que antes funcionava tão perfeitamente, não é tão simples de ser adaptado para o que têm em sua mente.
+
+O que não notamos de primeiro momento, é que apesar dessas _engines_ trazerem muitas _coisas prontas_, elas também trazem um alto nível de complexidade, e não só a nível de código, mas principalmente a nível de _conceitos_. Muitas vezes utilizar uma dessas bibliotecas sem a base técnica necessária pode mais atrapalhar do que ajudar. Por exemplo, sem um conhecimento de vetores e trignometria nós não seríamos sequer capazes de _realmente_ compreender a documentação básica de qualquer uma dessas bibliotecas. Por esse motivo, se você quer trabalhar com projetos que envolvam física, é _essencial_ conhecer esses conceitos básicos __isolados de qualquer tipo de biblioteca ou abstração__. Essa base é tão importante que você irá notar que várias (na verdade, mais do que você imagina) das funcionalidades que essas _engines físicas_ fornecem, podem ser implementadas _do zero_ sem muitas dificuldades, só tenho o conhecimento desses conceitos.
 
 # A base de tudo
 
