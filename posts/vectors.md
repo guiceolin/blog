@@ -6,13 +6,13 @@ author: Rodrigo Navarro
 
 # A base de tudo
 
-Se existe algo que serve base para qualquer simulação física que envolva movimento, essa base é o _vetor_. Qualquer _engine_ ou artigo sério no assunto não só fará um uso extenso deles, como também assumirá um prévio conhecimento em cálculos vetoriais. Agora, é preciso deixar claro que quando eu digo vetores eu _não_ estou falando de vetores como coleção de valores (os _arrays_), ou de _desenhos vetoriais_. Na verdade, __vetor__ tem várias definições, e a que iremos ver nesse artigo é essa (tirado da wikipedia):
+Se existe algo que serve base para qualquer simulação física, essa base é o _vetor_. Qualquer _engine_ ou artigo sobre o assunto não só fará um uso extenso deles, como também assumirá um prévio conhecimento em cálculos vetoriais. Agora, é preciso deixar claro que quando eu digo vetores eu _não_ estou falando de vetores como coleção de valores (os _arrays_), ou de _desenhos vetoriais_. Na verdade, __vetor__ tem várias definições, e a que iremos ver nesse artigo é (tirado da wikipedia):
 
 > Um conjunto de elementos geométricos, denominados segmentos de reta orientados, que possuem todos a mesma intensidade (denominada norma ou módulo), mesma direção e mesmo sentido.
 
-Se essa é a primeira vez que você se depara com o assunto, a definição acima provavelmente mais atrapalhou do que ajudou. De qualquer forma, não se preocupe, eles não são tão complicados quanto parecem.
+Se é a primeira vez que você se depara com o assunto, essa definição provavelmente mais atrapalhou do que ajudou. Mas não se preocupe, eles não são tão complicados quanto parecem.
 
-Mas antes de entender exatamente _o que_ são vetores, é interessante entender o _porquê_ eles são tão importantes para simulações físicas. Para isso, nada melhor que um exemplo prático, que em um primeiro momento será implementado da maneira mais simplista possível (sem o uso de vetores), e posteriormente utilizando vetores.
+Agora antes de entender exatamente _o que_ são vetores, é interessante entender o _porquê_ eles são tão importantes para nossas simulações físicas. Para isso, nada melhor que um exemplo prático, que em um primeiro momento será implementado da maneira mais simplista possível (sem o uso de vetores), e posteriormente utilizando vetores.
 
 ## Sobre os exemplos
 
@@ -90,7 +90,7 @@ Apesar de simples, o exemplo é interessante porque deixa bem evidente dois conc
 * __Posição__: as propriedades `x` e `y` do círculo
 * __Velocidade__: a quantidade de pixels que a _posição_ será alterada a cada iteração do loop, representadas pelas variáveis `xVelocity` e `yVelocity`
 
-Claro que a medida que vamos refinando nossas simulações, podemos querer adicionar outras propriedades físicas. Por exemplo:
+E claro que a medida que vamos refinando nossas simulações, podemos querer adicionar outras propriedades físicas. Por exemplo:
 
 * __Aceleração__: quantidade de variação de _velocidade_ a cada iteração. Seria representada por algo como `xAcceletation` e `yAcceleration`
 * __Vento__: `xWind` e `yWind`
@@ -125,7 +125,7 @@ Vetores são, resumidamente, a **diferença entre dois pontos** num espaço. Rel
 
 Observando a fórmula acima podemos então afirmar que a __velocidade é um vetor__, já que ela descreve a diferença entre dois pontos: o ponto atual do objeto, e o ponto que o objeto vai estar após a iteração.
 
-Mas agora você pode se perguntar, e a __posição__? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. A resposta para essa pergunta, por acaso é um tanto complicada, afinal esse é um assunto bastante debatido, tanto que algumas linguagens (como por exemplo o _Java_) tem classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar as coisas, vamos também seguir a segunda opção.
+Mas agora você pode se perguntar, e a __posição__? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. A resposta para essa pergunta é um tanto complicada, já que ela é bastante debatido, tanto que algumas linguagens (como por exemplo o _Java_) tem classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar as coisas, vamos também seguir a segunda opção.
 
 Mas voltando ao exemplo, tínhamos:
 
@@ -309,7 +309,7 @@ Como vimos na multiplicação de divisão dos vetores, já sabemos que é possí
 
 [ilustração de um vetor]
 
-O fato é: ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Com isso, vamos voltar a nosso colegial e relembrar do _temorema de Pitagoras_, que utilizaremos para descobrir a hipotenusa do triângulo, que nada mais é do seu _tamanho_, ou, no notação mais correta, sua __magnitude__.
+O fato é: ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Com isso, vamos voltar a nosso colegial e relembrar do _temorema de Pitagoras_, que utilizaremos para descobrir a hipotenusa do triângulo, já que ela equivale ao _tamanho_ do vetor, ou, no notação mais correta, a __magnitude__.
 
 [ilustração da regra de pytagoras]
 
@@ -391,7 +391,7 @@ update: ->
   @position.add @velocity
 ```
 
-Tudo irá funcionar perfeitamente com um porém: a velocidade nesse caso tende ao infinito, ou seja, se deixarmos o exemplo rodando por muito tempo, a velocidade acumulada será tão grande que não será mais possível ver o círculo na tela. Precisamos de algo que consiga _limitar_ nossa velocidade, e como a __velocidade__ é um vetor, podemos dizer então que precisamos de um método que possa _limitar_ o tamanho, ou melhor dizendo: a magnitude de um vetor.
+Tudo irá funcionar perfeitamente com um porém: a velocidade nesse caso tende ao infinito, ou seja, se deixarmos o exemplo rodando por muito tempo, a velocidade acumulada será tão grande que não será mais possível ver o círculo na tela. Precisamos de algo que consiga _limitar_ nossa velocidade, e como a __velocidade__ é um vetor, podemos dizer então que precisamos de um método que possa _limitar_ o tamanho, ou melhor dizendo: limitar a magnitude de um vetor.
 
 ```coffeescript
 class Vector
@@ -506,9 +506,9 @@ Para computar a direção precisamos montar um vetor que vai da posição atual 
 direction = Vector.sub @mouse, @position
 ```
 
-Com isso criamos nosso vetor `direction` que aponta da posição do objeto até o ponteiro do mouse. Agora muito cuidado: se utilizássemos esse vetor como aceleração, nosso objeto iria aparecer no ponteiro do mouse instantaneamente. Talvez isso seja útil em alguma simulação, mas para nosso caso, queremos limitar o quão rápido o nosso objeto irá em direção ao mouse, ou seja, nós queremos limitar a _magnitude_ desse vetor.
+Com isso criamos nosso vetor `direction`, que irá apontar para o ponteiro do mouse. Agora muito cuidado: se utilizássemos esse vetor como aceleração, nosso objeto iria aparecer no ponteiro do mouse instantaneamente. Talvez isso seja útil em alguma simulação, mas para nosso caso, queremos limitar o quão rápido o nosso objeto irá em direção ao mouse, ou seja, nós queremos limitar a _magnitude_ desse vetor.
 
-Para conseguir limitar a magnitude, primeiro é necessário _normalizar_ o vetor (que lembrando irá manter sua direção, mas irá fixar sua magnitude ao valor `1`). Como ele normalizado, podemos facilmente escalar sua magnitude.
+Para isso, vamos _normalizar_ o vetor (que lembrando irá manter sua direção, mas irá fixar sua magnitude ao valor `1`) e como ele normalizado podemos facilmente escalar sua magnitude.
 
 ```coffeescript
 direction = Vector.sub @mouse, @position
