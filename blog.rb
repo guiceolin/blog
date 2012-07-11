@@ -55,24 +55,11 @@ class Blog < Sinatra::Base
   end
 
   get "/draft/:slug" do
-    protected! if ENV["RACK_ENV"] == "production"
     post = Post.find_by_slug(params[:slug]) or raise Sinatra::NotFound
     erb :post, :locals =>  { :post => post }
   end
 
   helpers do
-    def protected!
-      unless authorized?
-        response["WWW-Authenticate"] = 'Basic realm="Restricted Area"'
-        throw :halt, [401, "Not authorized\n"]
-      end
-    end
-
-    def authorized?
-      @auth ||= Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [ENV["ADMIN_USERNAME"], ENV["ADMIN_PASSWORD"]]
-    end
-
     def markdown(text)
       options = {
         :fenced_code_blocks => true,
