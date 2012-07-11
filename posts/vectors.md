@@ -188,6 +188,8 @@ Infelizmente como estamos trabalhado com _Javascript_ nos exemplos, você já de
 
 Já temos uma primeira versão da nossa classe `Vector` que basicamente é uma estrutura que possui as propriedades `x` e `y`. Agora teremos que implementar um método nessa classe que irá somar essas propriedades com as propriedades de um outro vetor. Mas antes, é importante entender exatamente o que significa somar dois vetores. Para isso, vamos primeiro nos familiarizar com algumas notações matemáticas usadas para representar vetores.
 
+<img src="/images/vector-notation.png" style="display: block; float: right; margin-right: 30px" />
+
 Vetores normalmente são representados com as letras em negrito e/ou com uma seta em cima do seu nome. Para facilitar a escrita, vamos utilizar apenas as letras em negrito para diferenciar um __vetor__ de um escalar (escalar se refere a um valor inteiro ou decimal, como as propriedades `x` e `y`).
 
 Com isso claro, vamos finalmente entender como funciona a soma de vetores. Já sabemos que cada vetor tem duas propriedades: um `x` e um `y`. Para somar um vetor com outro, basta somar as propriedades `x` e `y` de ambos.
@@ -266,8 +268,11 @@ class Vector
 
 Agora multiplicação é um pouco diferente. Nós não multiplicamos um _vetor_ por outro, como fazemos com a soma e subtração. Nós multiplicamos um vetor por um _escalar_. Sendo assim, em muitas linguagens você não encontrará um método `multiply`, você irá encontrar um método chamado `scale`, já que o que a multiplicação (e a divisão também) faz é escalar um vetor. Podemos dizer, por exemplo que queremos _dobrar_ ou _triplicar_ o tamanho de um vetor, bem como podemos dizer que queremos reduzi-lo pela metade.
 
-![Vetor sendo escalado](/images/vector-multiplication.png)
-__b__ = __a__ * 3
+<p style="text-align: center">
+  <img alt="Vetor sendo escalado" src="/images/vector-multiplication.png" />
+  <br />
+  <strong>b</strong> = <strong>a</strong> * 3
+</p>
 
 Sendo assim, a implementação do nosso método:
 
@@ -325,11 +330,15 @@ Com isso concluímos as operações básicas. Mas ainda não é tudo (nem perto 
 
 Como vimos na multiplicação de divisão dos vetores, já sabemos que é possível aumentar-los e diminui-los. Mas e se quisermos saber qual o _tamanho_ exato de um vetor? Como você já deve ter notado, todo o vetor se parece com um triangulo retângulo quando juntarmos seus pontos:
 
-[ilustração de um vetor]
+<p style="text-align: center">
+  <img alt="Vetor de posição" src="/images/vector-length.png" />
+</p>
 
 O fato é: ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Com isso, vamos voltar a nosso colegial e relembrar do _temorema de Pitagoras_, que utilizaremos para descobrir a hipotenusa do triângulo, já que ela equivale ao _tamanho_ do vetor, ou, no notação mais correta, a __magnitude__.
 
-[ilustração da regra de pytagoras]
+<p style="text-align: center">
+  <img alt="Vetor de posição" src="/images/vector-pythagoras.png" />
+</p>
 
 Só relembrando, segundo teorema de Pitagoras, a _hipotenusa é a soma dos quadrado dos lados_ de um triângulo retângulo. Logo, a implementação é bem simples:
 
