@@ -15,7 +15,11 @@ Se existe algo que serve base para qualquer simulação física, essa base é o 
 
 > Um conjunto de elementos geométricos, denominados segmentos de reta orientados, que possuem todos a mesma intensidade (denominada norma ou módulo), mesma direção e mesmo sentido.
 
-Se é a primeira vez que você se depara com o assunto, essa definição provavelmente mais atrapalhou do que ajudou. Mas não se preocupe, eles não são tão complicados quanto parecem.
+Se é a primeira vez que você se depara com o assunto, essa definição provavelmente mais atrapalhou do que ajudou. Mas basicamente, vetor é uma _coleção de valores que descrevem uma posição relativa num espaço_.
+
+<p style="text-align: center">
+  <img alt="Vetor indo do ponto a ao ponto b" src="/images/vector-definition.png" />
+</p>
 
 Agora antes de entender exatamente _o que_ são vetores, é interessante entender o _porquê_ eles são tão importantes para nossas simulações físicas. Para isso, nada melhor que um exemplo prático, que em um primeiro momento será implementado da maneira mais simplista possível (sem o uso de vetores), e posteriormente utilizando vetores.
 
@@ -130,7 +134,15 @@ Vetores são, resumidamente, a **diferença entre dois pontos** num espaço. Rel
 
 Observando a fórmula acima podemos então afirmar que a __velocidade é um vetor__, já que ela descreve a diferença entre dois pontos: o ponto atual do objeto, e o ponto que o objeto vai estar após a iteração.
 
+<p style="text-align: center">
+  <img alt="Vetor de velocidade" src="/images/vector-velocity.png" />
+</p>
+
 Mas agora você pode se perguntar, e a __posição__? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. A resposta para essa pergunta é um tanto complicada, já que ela é bastante debatido, tanto que algumas linguagens (como por exemplo o _Java_) tem classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar as coisas, vamos também seguir a segunda opção.
+
+<p style="text-align: center">
+  <img alt="Vetor de posição" src="/images/vector-coordinate.png" />
+</p>
 
 Mas voltando ao exemplo, tínhamos:
 
@@ -252,9 +264,10 @@ class Vector
     @y -= vector.y
 ```
 
-Agora multiplicação é um pouco diferente. Nós não multiplicamos um _vetor_ por outro, como fazemos com a soma e subtração. Nós multiplicamos um vetor por um _escalar_. Sendo assim, em muitas linguagens você não encontrará um método `multiply`, você irá encontrar um método chamado `scale`, já que o que a multiplicação (e a divisão também) faz é escalar um vetor. Podemos dizer, por exemplo que queremos _dobrar_ ou _triplicar_ o tamanho de um vetor, bem como podemos dizer que queremos reduzir ele pela metade.
+Agora multiplicação é um pouco diferente. Nós não multiplicamos um _vetor_ por outro, como fazemos com a soma e subtração. Nós multiplicamos um vetor por um _escalar_. Sendo assim, em muitas linguagens você não encontrará um método `multiply`, você irá encontrar um método chamado `scale`, já que o que a multiplicação (e a divisão também) faz é escalar um vetor. Podemos dizer, por exemplo que queremos _dobrar_ ou _triplicar_ o tamanho de um vetor, bem como podemos dizer que queremos reduzi-lo pela metade.
 
-[ilustração de um vetor sendo escalado]
+![Vetor sendo escalado](/images/vector-multiplication.png)
+__b__ = __a__ * 3
 
 Sendo assim, a implementação do nosso método:
 
