@@ -138,7 +138,7 @@ Observando a fórmula acima podemos então afirmar que a __velocidade é um veto
   <img alt="Vetor de velocidade" src="/images/vector-velocity.png" />
 </p>
 
-Mas agora você pode se perguntar, e a __posição__? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. A resposta para essa pergunta é um tanto complicada, já que ela é bastante debatido, tanto que algumas linguagens (como por exemplo o _Java_) tem classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar as coisas, vamos também seguir a segunda opção.
+Mas agora você pode se perguntar, e a __posição__? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. A resposta para essa pergunta é bastante debatida, tanto que algumas linguagens (como por exemplo o _Java_) utilizam classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar, vamos também tratar uma coordenada como um vetor.
 
 <p style="text-align: center">
   <img alt="Vetor de posição" src="/images/vector-coordinate.png" />
@@ -334,13 +334,11 @@ Como vimos na multiplicação de divisão dos vetores, já sabemos que é possí
   <img alt="Vetor de posição" src="/images/vector-length.png" />
 </p>
 
-O fato é: ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Com isso, vamos voltar a nosso colegial e relembrar do _temorema de Pitagoras_, que utilizaremos para descobrir a hipotenusa do triângulo, já que ela equivale ao _tamanho_ do vetor, ou, no notação mais correta, a __magnitude__.
+Acontece que ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Com isso, basta relembrar o _temorema de Pitagoras_, que diz que a hipotenusa de triângulo (que equivale a magnitude do vetor), é a soma dos quadrados dos catetos.
 
 <p style="text-align: center">
   <img alt="Vetor de posição" src="/images/vector-pythagoras.png" />
 </p>
-
-Só relembrando, segundo teorema de Pitagoras, a _hipotenusa é a soma dos quadrado dos lados_ de um triângulo retângulo. Logo, a implementação é bem simples:
 
 ```coffeescript
 class Vector
