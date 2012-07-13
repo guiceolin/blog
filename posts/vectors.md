@@ -28,7 +28,7 @@ Agora antes de entender exatamente _o que_ são vetores, é interessante entende
 
 Todos os códigos serão demonstrados usando [Coffeescript](http://coffeescript.org/). Se você ainda não conhece essa linguagem, vale uma rápida consulta em sua [documentação](http://coffeescript.org/#overview) para se familiarizar com a sintaxe. Basicamente é uma forma ~~menos sofrida~~ mais elegante de se escrever Javascript.
 
-Para a demonstração gráfica dos exemplos iremos utilizar a [API _canvas_ do HTML5](http://dev.w3.org/html5/2dcontext/), que apesar de ser uma tecnologia relativamente recente, existe [muito](http://diveintohtml5.info/canvas.html) [material](https://developer.mozilla.org/en/Canvas_tutorial/) [disponível](http://dev.opera.com/articles/view/html-5-canvas-the-basics/) para consulta.
+Para a demonstração gráfica dos exemplos iremos utilizar a [API _canvas_ do HTML5](http://dev.w3.org/html5/2dcontext/), que mesmo sendo uma tecnologia relativamente recente, existe [muito](http://diveintohtml5.info/canvas.html) [material](https://developer.mozilla.org/en/Canvas_tutorial/) [disponível](http://dev.opera.com/articles/view/html-5-canvas-the-basics/) para consulta.
 
 Por fim, muitos dos códigos exibidos na página serão uma versão um pouco simplificada da implementação em si, escondendo, por exemplo, os _detalhes_ da renderização dos objetos na tela ou tratamento de eventos (como movimento de mouse, clicks, etc). De qualquer forma, você pode consultar o código completo de todos os exemplos [nesse repositório no github](http://github.com/reu/blog/assets/coffee).
 
