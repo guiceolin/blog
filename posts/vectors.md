@@ -7,7 +7,7 @@ Quem dera...
 
 Infelizmente, toda essa euforia acaba no primeiro projeto real que vamos fazer usando qualquer uma dessas bibliotecas. É normal pensar: "mas é só alterar um pouco esse exemplo, e depois pegar esse outro pedaço de código do _Stackoverflow_, e então..." ... e então... você vai notar que nada vai funcionar do jeito como você imaginou. O exemplo que antes funcionava tão perfeitamente, não é tão simples de ser adaptado para o que têm em sua mente.
 
-O que não notamos de primeiro momento, é que apesar dessas _engines_ trazerem muitas _coisas prontas_, elas também trazem um alto nível de complexidade, e não só a nível de código, mas principalmente a nível de _conceito_. Muitas vezes utilizar uma dessas bibliotecas sem a base técnica necessária pode mais atrapalhar do que ajudar. Por exemplo, sem um conhecimento de vetores e trignometria nós não seríamos sequer capazes de _realmente_ compreender a documentação básica de qualquer uma dessas _engines_. Por esse motivo, se você quer trabalhar com projetos que envolvam física, é _essencial_ conhecer esses conceitos básicos __isolados de qualquer tipo de biblioteca ou abstração__. Essa base é tão importante que você irá notar que várias (na verdade, mais do que você imagina) das funcionalidades que essas _engines físicas_ fornecem, podem ser implementadas - apenas com o conhecimento desses conceittos - _do zero_ sem muitas dificuldades.
+O que não notamos de primeiro momento, é que apesar dessas _engines_ trazerem muitas _coisas prontas_, elas também trazem um alto nível de complexidade, e não só a nível de código, mas principalmente a nível de _conceito_. Muitas vezes utilizar uma dessas bibliotecas sem a base técnica necessária pode mais atrapalhar do que ajudar. Por exemplo, sem um conhecimento de vetores e trignometria nós não seríamos sequer capazes de _realmente_ compreender a documentação básica de qualquer uma dessas _engines_. Por esse motivo, se você quer trabalhar com projetos que envolvam física, é _essencial_ conhecer esses conceitos básicos __isolados de qualquer tipo de biblioteca ou abstração__. Essa base é tão importante que você irá notar que várias (na verdade, mais do que você imagina) das funcionalidades que essas _engines físicas_ fornecem, podem ser implementadas - apenas com o conhecimento desses conceitos - _do zero_ sem muitas dificuldades.
 
 # A base de tudo
 
@@ -138,7 +138,7 @@ Observando a fórmula acima podemos então afirmar que a __velocidade é um veto
   <img alt="Vetor de velocidade" src="/images/vector-velocity.png" />
 </p>
 
-Mas agora você pode se perguntar, e a __posição__? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. A resposta para essa pergunta é bastante debatida, tanto que algumas linguagens (como por exemplo o _Java_) utilizam classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que eliminta a "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar, vamos também tratar uma coordenada como um vetor.
+Mas agora você pode se perguntar, e a __posição__? É também considerada um vetor? Afinal, apesar de ela também ter as propriedades `x` e `y`, ela não descreve a diferença entre dois pontos, ela apenas especifica uma coordenada. A resposta para essa pergunta é bastante debatida, tanto que algumas linguagens (como por exemplo o _Java_) utilizam classes distintas para especificar uma _coordenada_ e um _vetor_. Em contra partida, a maior parte das linguagens e _engines físicas_ simplificam esse caso e __tratam essa coordenada também como um vetor__, já que uma outra forma descrever a posição é como a __diferença entre a origem para a sua posição__, o que elimina "burocracia" de ter duas classes que representam a mesma coisa só que com nomes diferentes. Para simplificar, vamos também tratar uma coordenada como um vetor.
 
 <p style="text-align: center">
   <img alt="Vetor de posição" src="/images/vector-coordinate.png" />
@@ -334,10 +334,18 @@ Como vimos na multiplicação de divisão dos vetores, já sabemos que é possí
   <img alt="Vetor de posição" src="/images/vector-length.png" />
 </p>
 
-Acontece que ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Com isso, basta relembrar o _temorema de Pitagoras_, que diz que a hipotenusa de triângulo (que equivale a magnitude do vetor), é a soma dos quadrados dos catetos.
+Acontece que ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Como nós já temos os dois lados do triângulo (os catetos), basta utilizarmos o [teorema de Pitagoras](http://pt.wikipedia.org/wiki/Pit%C3%A1goras) para encontrar a Hipotenusa.
 
 <p style="text-align: center">
-  <img alt="Vetor de posição" src="/images/vector-pythagoras.png" />
+  <img alt="Vetor de posição" src="/images/vector-triangle.png" />
+</p>
+
+A fórmula, caso alguém tenha faltado das aulas de trigonometria do colegial, é super simples:
+
+> A soma dos quadrados dos catetos é igual ao quadrado da hipotenusa.
+
+<p style="text-align: center">
+  <img alt="Teorema de pitágoras" src="/images/vector-pythagorean-theorem.gif" />
 </p>
 
 ```coffeescript
@@ -350,15 +358,15 @@ class Vector
 
 Conhecendo o conceito de _magnitude_ podemos finalmente entender um dos conceitos mais importantes em cálculos vetoriais: a normalização.
 
-Agora, _normalização_ é algo já bem conhecido e aplicado em várias situações. O processo consiste em tornar um valor "normal", ou "padrão", de forma que simplifique o processo de compara-lo com outros valores "padrões". No nosso caso, um vetor "padrão" (ou, um vetor "normal") é um vetor que tenha uma magnitude de valor 1. Ou seja, quando normalizamos um vetor, nos iremos reduzir seu tamanho pra 1, porém, note que como só estamos alterando seu tamanho, sua __direção__ se manterá intacta! Com isso, teremos o que chamamos de __vetor unitário__.
-
-[ilustração da normalização de um vetor]
+Agora, _normalização_ é algo já bem conhecido e aplicado em várias situações. O processo consiste em tornar um valor "normal", ou "padrão". No nosso caso, um vetor "padrão" (chamado de __vetor unitário__) é um vetor que tenha uma magnitude de _valor 1_. Ou seja, quando normalizamos um vetor, nos iremos reduzir seu tamanho pra 1, porém, note que como só seu tamanho é alterado, sua __direção__ irá se manter intacta!
 
 E como podemos reduzir o tamanho de um vetor para exatamente `1`? A reposta é uma equação simples: basta dividirmos cada uma de suas propriedades (no nosso caso, os valores de x e y) pela magnitude do vetor:
 
-[ilustração da normalização na prática]
+<p style="text-align: center">
+  <img alt="Vetor de posição" src="/images/vector-normalization.png" />
+</p>
 
-Se não ficou claro, creio que ficará com a implementação:
+A implementação fica simples, já que os métodos para divisão e magnitude já estão disponíveis: 
 
 ```coffeescript
 class Vector
@@ -462,7 +470,7 @@ E o resultado disso tudo podemos ver no seguinte exemplo:
 
 ### Aceleração aleatória
 
-Esse segundo exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos, acelerem ou desacelerem, mas tambem é usada para _qualquer_ mudança de velocidade, seja essa uma mudança de magnitude (que é o que faz um objeto andar mais rápido ou mais devegar), como também uma __mudança de direção__, pois é muito comum utilizarmos vetores para alterar a direção de objetos, tanto que em artigos futuros iremos estudar os [algorítimos do Craig Reynolds](http://www.red3d.com/cwr/steer/), e todos eles fazem muito uso desse conceito.
+Esse segundo exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos, acelerem ou desacelerem, mas também é usada para _qualquer_ mudança de velocidade, seja essa uma mudança de magnitude (que é o que faz um objeto andar mais rápido ou mais devagar), como também uma __mudança de direção__, pois é muito comum utilizarmos vetores para alterar a direção de objetos, tanto que em artigos futuros iremos estudar os [algorítimos do Craig Reynolds](http://www.red3d.com/cwr/steer/), e todos eles fazem muito uso desse conceito.
 
 Na próxima simulação, vamos pegar por base nosso último exemplo, e altera-lo para que a aceleração seja gerada a cada iteração, e não durante a inicialização do objeto.
 
@@ -525,7 +533,9 @@ Para esse tipo de simulação nós sempre iremos precisar calcular duas coisas: 
 
 Para computar a direção precisamos montar um vetor que vai da posição atual do objeto até o ponteiro do mouse. Podemos fazer isso com uma simples subtração (note que estamos utilizando nosso _método estático_): 
 
-[ilustração de subtração]
+<p style="text-align: center">
+  <img alt="Subtração do objeto para a posição do mouse" src="/images/vector-subtraction.png" />
+</p>
 
 ```coffeescript
 direction = Vector.sub @mouse, @position
@@ -616,9 +626,9 @@ setInterval infiniteLoop, 1000 / 60
 
 # Fechando
 
-Ainda existem (muitos) outros assuntos que podem ser abordados que utiliam vetores para simular eventos do mundo real. Por exemplo, você deve ter notado, que na nossa última simulação os círculos não "param" quando chegam no mouse, pelo contrário, eles "_passam_" por ele e depois precisam voltar (ficando nesse ciclo infinitamente). Isso acontece porque não estamos limitando a __força__ máxima que o vetor pode acelerar. Em futuros artigos, iremos estudar vários dos algorítimos do Crayg Reynolds, e um deles é o [_arrival_](http://www.red3d.com/cwr/steer/Arrival.html), que trata exatamente esse caso: um objeto que acelera até um ponto e desacelera a ponto de parar quando finalmente chega em seu destino.
+Ainda existem (muitos) outros assuntos que podem ser abordados que utilizam vetores para simular eventos do mundo real. Por exemplo, você deve ter notado, que na nossa última simulação os círculos não "param" quando chegam no mouse, pelo contrário, eles "_passam_" por ele e depois precisam voltar (ficando nesse ciclo infinitamente). Isso acontece porque não estamos limitando a __força__ máxima que o vetor pode acelerar. Em futuros artigos, iremos estudar vários dos algorítimos do Crayg Reynolds, e um deles é o [_arrival_](http://www.red3d.com/cwr/steer/Arrival.html), que trata exatamente esse caso: um objeto que acelera até um ponto e desacelera a ponto de parar quando finalmente chega em seu destino.
 
-Outra grande vantagem que ganhamos "quase de graça" quando utilizamos vetores, e que não foi explorada nesse artigo, é a conversã desses cálculos para um "mundo" `3D`. Para isso, bastava inicializar/manipular os vetores utilizando mais um eixo (convencionalmente chamado de eixo `z`). Tanto que converter os exemplos mostrados nessa página para suportar uma teceira dimensão é algo trivial, mas que ficará para um próximo artigo.
+Outra grande vantagem que ganhamos "quase de graça" quando utilizamos vetores, e que não foi explorada nesse artigo, é a conversão desses cálculos para um "mundo" `3D`. Para isso, bastava inicializar/manipular os vetores utilizando mais um eixo (convencionalmente chamado de eixo `z`). Tanto que converter os exemplos mostrados nessa página para suportar uma terceira dimensão é algo trivial, mas que ficará para um próximo artigo.
 
 Por hora, espero que tenha ficado claro as vantagens do uso de vetores em simulações físicas, bem como as propriedades e operações que eles possuem.
 
@@ -628,6 +638,6 @@ Muitas partes e exemplos desse artigo não foram só baseadas como quase transcr
 
 ### Opensource
 
-A classe `Vector` que criamos nesse artigo pode ser encontrada para download em seu [próprio repositório no github](http://github.com/reu/vector.js), desta forma quando precisar fazer calculos de vetores em javascript, basta inclui-la em seu projeto. Ela também dá suporte a vetores `3D`, coisa que não fizemos aqui.
+A classe `Vector` que criamos nesse artigo pode ser encontrada para download em seu [próprio repositório no github](http://github.com/reu/vector.js), desta forma quando precisar fazer cálculos de vetores em javascript, basta inclui-la em seu projeto. Ela também dá suporte a vetores `3D`, coisa que não fizemos aqui.
 
 Outra biblioteca usada nos exemplos é o [canvas-extensions](https://github.com/reu/canvas-extensions), que coloca alguns métodos úteis no `context` do `canvas` do HTML5 (como por exemplo, o método `fillCircle`).
