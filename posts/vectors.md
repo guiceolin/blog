@@ -663,7 +663,7 @@ Por hora, espero que tenha ficado claro algumas das vantagens do uso de vetores 
 
 ### Agradecimentos
 
-A maior parte do tanto do conteúdo quanto dos exemplos desse artigo não foram só baseados como transcritas de livros e tutoriais escritos pelo [Daniel Shiffman](http://www.shiffman.net) e pelo [Craig Reynolds](http://www.red3d.com/cwr). Portanto, todos os créditos devem ser dados a eles.
+A maior parte tanto do conteúdo quanto dos exemplos desse artigo não foram só baseados como transcritos de livros e tutoriais escritos pelo [Daniel Shiffman](http://www.shiffman.net) e pelo [Craig Reynolds](http://www.red3d.com/cwr). Portanto, todos os créditos devem ser dados a eles.
 
 ### Opensource
 
