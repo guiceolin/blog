@@ -31,6 +31,11 @@ class Ball
     context.fillCircle @position.x, @position.y, @radius
     context.closePath()
 
+  reset: =>
+    @position = new Vector 0, 0
+    @velocity = new Vector 0, 0
+    @acceleration = new Vector(0.005, 0.01)
+
 class Example
   constructor: (container, width = 200, height = 200) ->
     @canvas  = $("<canvas width='#{width}' height='#{height}'></canvas>").appendTo($(container))[0]
@@ -38,7 +43,9 @@ class Example
 
     @ball = new Ball(10, 10)
 
-  start: -> do @loop
+  start: ->
+    do @loop
+    setInterval(@ball.reset, 1000 * 20)
 
   loop: =>
     requestAnimationFrame @loop
@@ -53,4 +60,4 @@ class Example
     @context.fillStyle = "rgba(14, 14, 14, 0.2)"
     @context.fillRect 0, 0, @canvas.width, @canvas.height
 
-window.BouncngBallsWithConstantAcceleration = Example
+window.BallWithConstantAcceleration = Example

@@ -1,13 +1,14 @@
 title: Vetores
 author: Rodrigo Navarro
+date: 2012-07-13
 
-_Engines físicas_ estão em alta. Com apenas um google, podemos facilmente encontrar bibliotecas que nos permitem criar simulações físicas extremamente avançadas. É impossível não se maravilhar enquanto navega pelas dezenas de exemplos dos mais variados casos que essas bibliotecas fornecem, e o melhor: além de terem suporte para uma grande variedade de linguagens, grande parte delas estão disponíveis gratuitamente, e na maior parte das vezes, até com o código fonte aberto. É como se todos os nossos problemas envolvendo física estivessem resolvidos!
+_Engines físicas_ estão em alta. Com apenas um _google_, podemos facilmente encontrar bibliotecas que nos permitem criar simulações físicas extremamente avançadas. É impossível não se maravilhar enquanto navega pelas dezenas de exemplos dos mais variados casos que essas bibliotecas exibem, e o melhor: além de terem suporte a uma gigantesca variedade de linguagens, grande parte delas estão disponíveis gratuitamente, e na maior parte das vezes, com o código fonte aberto. É como se todos os nossos problemas envolvendo física estivessem resolvidos!
 
 Quem dera...
 
-Infelizmente, toda essa euforia acaba no primeiro projeto real que vamos fazer usando qualquer uma dessas bibliotecas. É normal pensar: "mas é só alterar um pouco esse exemplo, e depois pegar esse outro pedaço de código do _Stackoverflow_, e então..." ... e então... você vai notar que nada vai funcionar do jeito como você imaginou. O exemplo que antes funcionava tão perfeitamente, não é tão simples de ser adaptado para o que têm em sua mente.
+Infelizmente, toda a empolgação acaba no primeiro projeto real que vamos fazer usando qualquer uma dessas bibliotecas. É normal pensar: "mas é só alterar um pouco esse exemplo, e depois pegar esse outro pedaço de código do _Stackoverflow_, e então..." ... e então... você vai notar que nada vai funcionar do jeito como você imaginou. O exemplo que antes funcionava tão perfeitamente, não é tão simples de ser adaptado para o que têm em sua mente.
 
-O que não notamos de primeiro momento, é que apesar dessas _engines_ trazerem muitas _coisas prontas_, elas também trazem um alto nível de complexidade, e não só a nível de código, mas principalmente a nível de _conceito_. Muitas vezes utilizar uma dessas bibliotecas sem a base técnica necessária pode mais atrapalhar do que ajudar. Por exemplo, sem um conhecimento de vetores e trignometria nós não seríamos sequer capazes de _realmente_ compreender a documentação básica de qualquer uma dessas _engines_. Por esse motivo, se você quer trabalhar com projetos que envolvam física, é _essencial_ conhecer esses conceitos básicos __isolados de qualquer tipo de biblioteca ou abstração__. Essa base é tão importante que você irá notar que várias (na verdade, mais do que você imagina) das funcionalidades que essas _engines físicas_ fornecem, podem ser implementadas - apenas com o conhecimento desses conceitos - _do zero_ sem muitas dificuldades.
+O que não notamos de primeiro momento, é que apesar dessas _engines_ trazerem muitas _coisas prontas_, elas também trazem um alto nível de complexidade, e não só a nível de código, mas principalmente a nível de _conceito_. Muitas vezes utilizar uma dessas bibliotecas sem a base técnica necessária pode mais atrapalhar do que ajudar. Por exemplo, sem um conhecimento de vetores e trignometria nós não seríamos sequer capazes de _realmente_ compreender a documentação básica de qualquer uma delas. Por esse motivo, se você quer trabalhar com projetos que envolvam física, é _essencial_ conhecer esses conceitos básicos __isolados de qualquer tipo de biblioteca ou abstração__. Essa base é tão importante que você irá notar que várias (na verdade, mais do que você imagina) das funcionalidades que essas _engines físicas_ fornecem, podem ser implementadas _do zero_ sem muitas dificuldades.
 
 # A base de tudo
 
@@ -27,9 +28,9 @@ Agora antes de entender exatamente _o que_ são vetores, é interessante entende
 
 Todos os códigos serão demonstrados usando [Coffeescript](http://coffeescript.org/). Se você ainda não conhece essa linguagem, vale uma rápida consulta em sua [documentação](http://coffeescript.org/#overview) para se familiarizar com a sintaxe. Basicamente é uma forma ~~menos sofrida~~ mais elegante de se escrever Javascript.
 
-Mesmo sendo um detalhe que não vai afetar a compreensão dos exemplos, iremos utilizar a [API _canvas_ do HTML5](http://dev.w3.org/html5/2dcontext/) para _renderização_, que apesar de ser uma tecnologia relativamente recente, existe [muito](http://diveintohtml5.info/canvas.html) [material](https://developer.mozilla.org/en/Canvas_tutorial/) [disponível](http://dev.opera.com/articles/view/html-5-canvas-the-basics/) para consulta sobre o assunto.
+Para a demonstração gráfica dos exemplos iremos utilizar a [API _canvas_ do HTML5](http://dev.w3.org/html5/2dcontext/), que apesar de ser uma tecnologia relativamente recente, existe [muito](http://diveintohtml5.info/canvas.html) [material](https://developer.mozilla.org/en/Canvas_tutorial/) [disponível](http://dev.opera.com/articles/view/html-5-canvas-the-basics/) para consulta.
 
-Além disso, muitos dos códigos exibidos na página serão uma versão um pouco simplificada da implementação em si, escondendo, por exemplo, os _detalhes_ da renderização dos objetos na tela ou tratamento de eventos (como movimento de mouse, clicks, etc). De qualquer forma, você pode consultar o código completo de todos os exemplos [nesse repositório no github](http://github.com/reu/blog/assets/coffee).
+Por fim, muitos dos códigos exibidos na página serão uma versão um pouco simplificada da implementação em si, escondendo, por exemplo, os _detalhes_ da renderização dos objetos na tela ou tratamento de eventos (como movimento de mouse, clicks, etc). De qualquer forma, você pode consultar o código completo de todos os exemplos [nesse repositório no github](http://github.com/reu/blog/assets/coffee).
 
 ## O _hello world_ das simulações físicas
 
@@ -99,22 +100,26 @@ Apesar de simples, o exemplo é interessante porque deixa bem evidente dois conc
 * __Posição__: as propriedades `x` e `y` do círculo
 * __Velocidade__: a quantidade de pixels que a _posição_ será alterada a cada iteração do loop, representadas pelas variáveis `xVelocity` e `yVelocity`
 
-E claro que a medida que vamos refinando nossas simulações, podemos querer adicionar outras propriedades físicas. Por exemplo:
+E claro que a pederiamos refinar a simulação adicionando outras propriedades físicas, como por exemplo:
 
 * __Aceleração__: quantidade de variação de _velocidade_ a cada iteração. Seria representada por algo como `xAcceletation` e `yAcceleration`
 * __Vento__: `xWind` e `yWind`
 * __Gravidade__: `xGravity` e `yGravity`
 * __Fricção__: `xFriction` e `yFriction`
 
-Podemos observar claramente que todas essas propriedades (gravidade, vento, etc) sempre precisam de dois valores para serem representadas: um `x` e um `y`. Isso acontece porque estamos trabalhando num contexto `2D`, se a nossa simulação fosse em `3D`, notaríamos que iríamos precisar de ainda mais um valor, que seria referente ao eixo `z`.
+Agora se pararmos para observar, podemos notar claramente que todas essas propriedades (aceleração, vento, etc) sempre precisam de dois valores para serem representadas: um `x` e um `y`. Isso acontece porque estamos trabalhando num contexto `2D`, se a nossa simulação fosse em `3D`, notaríamos que iríamos precisar de ainda mais um valor, que seria referente ao eixo `z`.
 
-Agora, e se pudéssemos agrupar esses valores em algum tipo de estrutura, de modo simplificar (e generalizar) o processo? Afinal, não ficaria mais organizado se ao invés de escrever dessa maneira:
+Sabendo-se disso, e se agrupássemos esses dois valores em algum tipo de estrutura, de modo generalizar (e simplificar) as coisas? Afinal, não ficaria mais organizado se ao invés de escrever dessa maneira:
 
 ```coffeescript
 @x = 4
 @y = 8
+
 @xVelocity = 1.5
 @yVelocity = 3
+
+@xWind = 0.3
+@yWind = 0.01
 ```
 
 Escrevêssemos dessa?
@@ -122,13 +127,14 @@ Escrevêssemos dessa?
 ```coffeescript
 @position = new Vector(4, 8)
 @velocity = new Vector(1, 3)
+@wind     = new Vector(0.3, 0.01)
 ```
 
-Sim, acabamos de escrever nossos dois primeiros vetores, que até então não parecem trazer muitas vantagens, mas não se preocupe, isso é só o começo.
+Sim, acabamos de escrever nossos primeiros vetores! Claro que no momento eles não parecem trazer muitas vantagens, mas não se preocupe, isso é só o começo.
 
 ## Conhecendo os vetores
 
-Vetores são, resumidamente, a **diferença entre dois pontos** num espaço. Relembrando o que foi demonstrado no exemplo anterior, nós estamos alterando a posição do círculo a cada iteração por um número de pixels horizontais e um número de pixels verticais (foi o que chamamos de **velocidade**), que, matematicamente se traduz para:
+Como já vimos no início a definição básica de vetores, podemos resumi-los aqui como a **diferença entre dois pontos** num espaço. Relembrando o que foi demonstrado no exemplo anterior, nós estamos alterando a posição do círculo a cada iteração por um número de pixels horizontais e um número de pixels verticais (foi o que chamamos de **velocidade**), que, matematicamente se traduz para:
 
 `position = position + velocity`
 
@@ -186,13 +192,13 @@ Infelizmente como estamos trabalhado com _Javascript_ nos exemplos, você já de
 
 ### Somando vetores
 
-Já temos uma primeira versão da nossa classe `Vector` que basicamente é uma estrutura que possui as propriedades `x` e `y`. Agora teremos que implementar um método nessa classe que irá somar essas propriedades com as propriedades de um outro vetor. Mas antes, é importante entender exatamente o que significa somar dois vetores. Para isso, vamos primeiro nos familiarizar com algumas notações matemáticas usadas para representar vetores.
+Já temos uma primeira versão da nossa classe `Vector` que basicamente é uma estrutura que possui as propriedades `x` e `y`. Agora teremos que implementar um método nessa classe que irá somar essas propriedades com as propriedades de um outro vetor. Mas antes, é importante entender exatamente o que significa somar dois vetores. Para isso, vamos primeiro nos familiarizar com algumas notações matemáticas que serão usadas daqui para frente.
 
 <img src="/images/vector-notation.png" style="display: block; float: right; margin-right: 30px" />
 
 Vetores normalmente são representados com as letras em negrito e/ou com uma seta em cima do seu nome. Para facilitar a escrita, vamos utilizar apenas as letras em negrito para diferenciar um __vetor__ de um escalar (escalar se refere a um valor inteiro ou decimal, como as propriedades `x` e `y`).
 
-Com isso claro, vamos finalmente entender como funciona a soma de vetores. Já sabemos que cada vetor tem duas propriedades: um `x` e um `y`. Para somar um vetor com outro, basta somar as propriedades `x` e `y` de ambos.
+Com isso claro, vamos retomar no caso da soma. Já sabemos que cada vetor tem duas propriedades: um `x` e um `y`. Para somar um vetor com outro, basta somar as propriedades `x` e `y` de ambos.
 
 Para ficar mais claro, supondo que temos os vetores __a__ e __b__:
 
@@ -268,10 +274,25 @@ class Vector
 
 Agora multiplicação é um pouco diferente. Nós não multiplicamos um _vetor_ por outro, como fazemos com a soma e subtração. Nós multiplicamos um vetor por um _escalar_. Sendo assim, em muitas linguagens você não encontrará um método `multiply`, você irá encontrar um método chamado `scale`, já que o que a multiplicação (e a divisão também) faz é escalar um vetor. Podemos dizer, por exemplo que queremos _dobrar_ ou _triplicar_ o tamanho de um vetor, bem como podemos dizer que queremos reduzi-lo pela metade.
 
+Novamente, supondo que temos um vetor __a__:
+
+__a__ = (-7, -3)  
+
+Vamos criar um vetor __b__ __três vezes maior__ que o __a__:
+
+__b__ = __a__ * 3
+
+Isso é equivalente a:
+
+__b__<sub>x</sub> = -7 * 3  
+__b__<sub>y</sub> = -3 * 3
+
+Portanto:
+
+__b__ = (-21, -9)
+
 <p style="text-align: center">
   <img alt="Vetor sendo escalado" src="/images/vector-multiplication.png" />
-  <br />
-  <strong>b</strong> = <strong>a</strong> * 3
 </p>
 
 Sendo assim, a implementação do nosso método:
@@ -328,13 +349,13 @@ Com isso concluímos as operações básicas. Mas ainda não é tudo (nem perto 
 
 ### Magnitude
 
-Como vimos na multiplicação de divisão dos vetores, já sabemos que é possível aumentar-los e diminui-los. Mas e se quisermos saber qual o _tamanho_ exato de um vetor? Como você já deve ter notado, todo o vetor se parece com um triangulo retângulo quando juntarmos seus pontos:
+Como ficou claro na multiplicação e divisão, sabemos que é possível aumentar e diminuir vetores facilmente. Mas e se quisermos saber qual o __tamanho__ exato de um vetor? Como você já deve ter notado, todo o vetor se parece com um triangulo retângulo quando juntarmos seus pontos:
 
 <p style="text-align: center">
   <img alt="Vetor de posição" src="/images/vector-length.png" />
 </p>
 
-Acontece que ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo. Como nós já temos os dois lados do triângulo (os catetos), basta utilizarmos o [teorema de Pitagoras](http://pt.wikipedia.org/wiki/Pit%C3%A1goras) para encontrar a Hipotenusa.
+Acontece que ele não só _se parece_ com um triângulo, um vetor _é_ triângulo retângulo, e como nós já temos os dois lados do triângulo (os catetos), basta utilizarmos o [teorema de Pitagoras](http://pt.wikipedia.org/wiki/Pit%C3%A1goras) para encontrar a _Hipotenusa_ (que representa o tamanho de qualquer vetor). 
 
 <p style="text-align: center">
   <img alt="Vetor de posição" src="/images/vector-triangle.png" />
@@ -358,9 +379,9 @@ class Vector
 
 Conhecendo o conceito de _magnitude_ podemos finalmente entender um dos conceitos mais importantes em cálculos vetoriais: a normalização.
 
-Agora, _normalização_ é algo já bem conhecido e aplicado em várias situações. O processo consiste em tornar um valor "normal", ou "padrão". No nosso caso, um vetor "padrão" (chamado de __vetor unitário__) é um vetor que tenha uma magnitude de _valor 1_. Ou seja, quando normalizamos um vetor, nos iremos reduzir seu tamanho pra 1, porém, note que como só seu tamanho é alterado, sua __direção__ irá se manter intacta!
+Agora, _normalização_ é algo já bem conhecido e aplicado em várias situações. O processo consiste em tornar um valor "normal", ou "padrão". No nosso caso, um vetor "padrão" (chamado de __vetor unitário__) é um vetor que tenha uma magnitude de _valor 1_. Ou seja, pra normalizar nosso vetor, basta reduzirmos (ou aumentarmos em alguns casos) seu _tamanho_ para 1. A parte interessante disso é que como só seu tamanho é alterado, sua __direção__ é mantida intacta!
 
-E como podemos reduzir o tamanho de um vetor para exatamente `1`? A reposta é uma equação simples: basta dividirmos cada uma de suas propriedades (no nosso caso, os valores de x e y) pela magnitude do vetor:
+E como podemos setar o tamanho de um vetor para exatamente `1`? Simples, basta dividirmos cada uma de suas propriedades (no nosso caso, os valores de x e y) pela magnitude do vetor:
 
 <p style="text-align: center">
   <img alt="Vetor de posição" src="/images/vector-normalization.png" />
@@ -376,7 +397,7 @@ class Vector
 
 ## Programando movimento com vetores
 
-Até agora só vimos os conceitos básicos de vetores mas não fizemos nada prático que realmente justifique o uso deles. Por isso, é possível que vetores continuem parecendo pouco úteis. A verdade é que leva um tempo para se notar o quanto importante é saber utiliza-los, mas mesmo assim, isso vai mudar um pouco de agora em diante, já que iremos explorar alguns casos um pouco mais complexos.
+Até agora só vimos os conceitos básicos de vetores mas não fizemos nada prático que realmente justifique o uso deles, logo, é possível que eles continuem parecendo pouco úteis. A verdade é que leva um tempo para _realmente_ perceber o quanto importante é saber utiliza-los. Para tentar "acelerar" esse processo, vamos explorar alguns casos um pouco mais complexos, onde a utilização correta de vetores pode tornar a implementação _muito_ mais simples tanto de escrever como de compreender.
 
 Para começar, vamos ver algo muito utilizado em qualquer simulação física: __aceleração__.
 
@@ -392,7 +413,7 @@ velocity.add(acceleration)
 position.add(velocity)
 ```
 
-Como é possível notar, podemos alterar tanto a posição e a velocidade através da aceleração, com isso, nunca será necessário alterar os valores de velocidade e posição diretamente (apenas, é claro, no processo de inicialização). Esse processo, de não alterar diretamente os valores de velocidade e posição, por exemplo, é usado por todas as _engines_ físicas, ou seja, quando quisermos fazer um objeto se mover pela tela, temos que pensar em algorítimos para manipular sua _aceleração_. Para ficar claro, vamos ver alguns dos mais utilizados:
+Como é possível notar, podemos alterar tanto a posição e a velocidade através da aceleração, com isso, nunca será necessário alterar os valores de velocidade e posição diretamente (apenas, é claro, no processo de inicialização). Essa "ideia" de não alterar diretamente os valores de velocidade e posição, por exemplo, é muito comum em qualquer _engine_ física, por isso quando quisermos fazer um objeto se mover pela tela, temos que pensar em algorítimos para manipular sua _aceleração_. Para ficar claro, vamos ver alguns algorítimos bastante conhecidos:
 
 1. Aceleração constante
 2. Aceleração aleatória
@@ -414,7 +435,7 @@ class Ball
     @acceleration = new Vector(0.005, 0.01)
 ```
 
-Como podemos notar, por enquanto as únicas modificações feitas foram zerar a velocidade e adicionar uma nova propriedade para a aceleração. Note também que a aceleração tem valores _muito_ pequenos, isso é necessário porque devemos lembrar que a cada iteração do nosso loop infinito, iremos somar esses valores na velocidade do círculo, e como temos 60 iterações desse loop por segundo, você já pode imaginar o que aconteceria que se o valor for muito grande...
+Podemos notar que por enquanto as únicas modificações feitas foram zerar a velocidade e adicionar uma nova propriedade para a aceleração. Outro ponto bastante importante de se observar é que a aceleração tem valores _muito_ pequenos, isso é necessário já que a cada iteração do nosso _loop_, iremos somar esses valores na velocidade do círculo, e como temos 60 iterações desse loop por segundo, se o valor for alto, o objeto irá ganhar aceleração muito rapidamente, tirando todo o "efeito" que queremos simular.
 
 Mas continuando, agora vamos alterar o método `update` para adicionar aceleração a nossa velocidade:
 
@@ -424,7 +445,9 @@ update: ->
   @position.add @velocity
 ```
 
-Tudo irá funcionar perfeitamente com um porém: a velocidade nesse caso tende ao infinito, ou seja, se deixarmos o exemplo rodando por muito tempo, a velocidade acumulada será tão grande que não será mais possível ver o círculo na tela. Precisamos de algo que consiga _limitar_ nossa velocidade, e como a __velocidade__ é um vetor, podemos dizer então que precisamos de um método que possa _limitar_ o tamanho, ou melhor dizendo: limitar a magnitude de um vetor.
+Tudo irá funcionar perfeitamente com um porém: a velocidade nesse caso tende ao infinito, ou seja, se deixarmos o exemplo rodando por algum tempo, a velocidade acumulada será tão grande que não será mais possível ver o círculo na tela (de tão rápido que ele irá se mover!). Com isso, precisamos pensar em uma maneira de _limitar_ nossa velocidade. Lembrando que como a __velocidade__ é um vetor, podemos dizer então que se conseguissemos _limitar o tamanho desse vetor_, iriamos conseguir limitar a velocidade máxima.
+
+Para isso, basta checarmos se a magnitude (lembrando que magnitude é o _tamanho_ do vetor) é maior que um certo número (um _escalar_), caso seja nada é feito, mas caso não seja, o que iremos fazer é _normalizar_ o vetor (ajustando então, seu tamanho para `1`) e depois multiplica-lo pelo tamanho máximo informado.
 
 ```coffeescript
 class Vector
@@ -433,8 +456,6 @@ class Vector
       do @normalize
       @mult(max)
 ```
-
-Note que aos poucos estamos fazendo uso de vários conceitos já vistos. A implementação é simples: basta checarmos se a magnitude é maior que a informada, se for, não fazemos nada, e se não for, normalizamos o vetor e escalamos ele para o tamanho máximo informado.
 
 Com isso, podemos agora _limitar_ nossa velocidade facilmente:
 
@@ -456,12 +477,12 @@ checkBounds: (area) ->
   @position.y = area.height if @position.y < 0
 ```
 
-E o resultado disso tudo podemos ver no seguinte exemplo:
+E o resultado podemos ver no seguinte exemplo:
 
-<script type="text/javascript" src="/coffee/bouncing_balls_with_constant_acceleration.js"></script>
+<script type="text/javascript" src="/coffee/constant_acceleration.js"></script>
 <script type="text/javascript">
   jQuery(function($){
-    var example = new BouncngBallsWithConstantAcceleration("#constant_acceleration", 900, 290);
+    var example = new BallWithConstantAcceleration("#constant_acceleration", 900, 290);
     example.start();
   });
 </script>
@@ -470,17 +491,17 @@ E o resultado disso tudo podemos ver no seguinte exemplo:
 
 ### Aceleração aleatória
 
-Esse segundo exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos, acelerem ou desacelerem, mas também é usada para _qualquer_ mudança de velocidade, seja essa uma mudança de magnitude (que é o que faz um objeto andar mais rápido ou mais devagar), como também uma __mudança de direção__, pois é muito comum utilizarmos vetores para alterar a direção de objetos, tanto que em artigos futuros iremos estudar os [algorítimos do Craig Reynolds](http://www.red3d.com/cwr/steer/), e todos eles fazem muito uso desse conceito.
+Esse próximo exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos acelerem ou desacelerem, mas também é usada para _qualquer_ mudança de velocidade, seja essa uma mudança de magnitude (que é o que faz um objeto andar mais rápido ou mais devagar), ou uma __mudança de direção__, já que é muito comum utilizarmos vetores para alterar a _direção_ de objetos. Em artigos futuros iremos estudar os [algorítimos do Craig Reynolds](http://www.red3d.com/cwr/steer/), e todos eles fazem muito uso desse conceito.
 
 Na próxima simulação, vamos pegar por base nosso último exemplo, e altera-lo para que a aceleração seja gerada a cada iteração, e não durante a inicialização do objeto.
 
-Mas antes, precisamos criar uma simples função que retorna um número aleatório dentro de um range, já que o javascript não fornece algo do tipo nativamente:
+Pegando como base o exemplo anterior, iremos modifica-lo para que ele gere uma aceleração diferente a cada iteração do nosso _loop_. Mas antes, para simplificar a implementação, vamos uma função que retorna um número aleatório dentro de um range, já que o javascript não fornece algo do tipo nativamente:
 
 ```coffeescript
 random = (min, max) -> Math.random() * (max - min) + min
 ```
 
-E agora vamos redefinir o método `update` para que ele gere uma aceleração aleatória:
+Com isso, vamos agora redefinir o método `update` e gerar uma aceleração aleatória a cada _frame_:
 
 ```coffeescript
 update: ->
@@ -510,6 +531,8 @@ Apesar de não ser necessário normalizar a aceleração, isso torna a implement
 @acceleration.div(random(1, 2))
 ```
 
+E o resultado dos dois casos:
+
 <script type="text/javascript" src="/coffee/random_acceleration.js"></script>
 <script type="text/javascript">
   jQuery(function($){
@@ -531,11 +554,15 @@ Como último exemplo, vamos implementar a aceleração direcionada a um ponto. E
 
 Para esse tipo de simulação nós sempre iremos precisar calcular duas coisas: a __magnitude__ e a __direção__.
 
-Para computar a direção precisamos montar um vetor que vai da posição atual do objeto até o ponteiro do mouse. Podemos fazer isso com uma simples subtração (note que estamos utilizando nosso _método estático_): 
+Computar a __magnitude__ creio que já está bem claro, já temos o método `magnitude` que retorna esse valor. Agora para a __direção__ precisamos montar um vetor que vai da posição atual do objeto até o ponteiro do mouse (podemos dizer que precisamos de um vetor que _aponta_ para o _mouse_). Para isso, vamos fazer uma simples subtração: vamos pegar o ponto do mouse e subtrair o ponto do objeto.
+
+`direction = mouse - position`
 
 <p style="text-align: center">
   <img alt="Subtração do objeto para a posição do mouse" src="/images/vector-subtraction.png" />
 </p>
+
+Traduzindo para nossa linguagem:
 
 ```coffeescript
 direction = Vector.sub @mouse, @position
@@ -566,7 +593,7 @@ update: ->
   @position.add @velocity
 ```
 
-E temos esse resultado (instanciando vários círculos):
+E temos esse resultado (instanciando vários objetos para um _wow effect!_):
 
 <script type="text/javascript" src="/coffee/acceleration_towards_mouse.js"></script>
 <script type="text/javascript">
@@ -577,6 +604,8 @@ E temos esse resultado (instanciando vários círculos):
 </script>
 
 <div id="acceleration_towards_mouse"></div>
+
+E nossa implementação completa:
 
 ```coffeescript
 class Ball
@@ -626,18 +655,18 @@ setInterval infiniteLoop, 1000 / 60
 
 # Fechando
 
-Ainda existem (muitos) outros assuntos que podem ser abordados que utilizam vetores para simular eventos do mundo real. Por exemplo, você deve ter notado, que na nossa última simulação os círculos não "param" quando chegam no mouse, pelo contrário, eles "_passam_" por ele e depois precisam voltar (ficando nesse ciclo infinitamente). Isso acontece porque não estamos limitando a __força__ máxima que o vetor pode acelerar. Em futuros artigos, iremos estudar vários dos algorítimos do Crayg Reynolds, e um deles é o [_arrival_](http://www.red3d.com/cwr/steer/Arrival.html), que trata exatamente esse caso: um objeto que acelera até um ponto e desacelera a ponto de parar quando finalmente chega em seu destino.
+Ainda existem (muitos) outros assuntos que podem ser abordados que utilizam vetores para simular eventos do mundo real. Por exemplo, você deve ter notado, que na nossa última simulação os círculos não "param" quando chegam no mouse, pelo contrário, eles "_passam_" por ele e depois precisam voltar (ficando nesse ciclo infinitamente). Isso acontece porque não estamos limitando a __força__ máxima que o vetor pode acelerar (lembre-se: estamos limitando apenas a _velocidade_). Em futuros artigos, iremos estudar vários dos algorítimos do Crayg Reynolds, e um deles é o [_arrival_](http://www.red3d.com/cwr/steer/Arrival.html), que trata exatamente esse caso: um objeto que acelera até um ponto e desacelera a ponto de parar quando finalmente chega em seu destino.
 
-Outra grande vantagem que ganhamos "quase de graça" quando utilizamos vetores, e que não foi explorada nesse artigo, é a conversão desses cálculos para um "mundo" `3D`. Para isso, bastava inicializar/manipular os vetores utilizando mais um eixo (convencionalmente chamado de eixo `z`). Tanto que converter os exemplos mostrados nessa página para suportar uma terceira dimensão é algo trivial, mas que ficará para um próximo artigo.
+Outra grande vantagem que ganhamos "quase de graça" quando utilizamos vetores, e que não foi explorada nesse artigo, é a conversão desses cálculos para um "mundo" `3D`. Para isso, bastava inicializar/manipular os vetores utilizando mais um eixo (convencionalmente chamado de eixo `z`). Converter os exemplos mostrados nessa página para suportar uma terceira dimensão é algo trivial, mas que ficará para um próximo artigo.
 
-Por hora, espero que tenha ficado claro as vantagens do uso de vetores em simulações físicas, bem como as propriedades e operações que eles possuem.
+Por hora, espero que tenha ficado claro algumas das vantagens do uso de vetores em simulações físicas, bem como as propriedades e operações que eles possuem.
 
 ### Agradecimentos
 
-Muitas partes e exemplos desse artigo não foram só baseadas como quase transcritas de livros e tutoriais escritos pelo [Daniel Shiffman](http://www.shiffman.net) e pelo [Craig Reynolds](http://www.red3d.com/cwr). Portanto, todos os créditos devem ser dados a eles.
+A maior parte do tanto do conteúdo quanto dos exemplos desse artigo não foram só baseados como transcritas de livros e tutoriais escritos pelo [Daniel Shiffman](http://www.shiffman.net) e pelo [Craig Reynolds](http://www.red3d.com/cwr). Portanto, todos os créditos devem ser dados a eles.
 
 ### Opensource
 
-A classe `Vector` que criamos nesse artigo pode ser encontrada para download em seu [próprio repositório no github](http://github.com/reu/vector.js), desta forma quando precisar fazer cálculos de vetores em javascript, basta inclui-la em seu projeto. Ela também dá suporte a vetores `3D`, coisa que não fizemos aqui.
+A classe `Vector` que criamos pode ser encontrada para download em seu [próprio repositório no github](http://github.com/reu/vector.js). Além de estar 100% coberta por testes (e ter alguns outros métodos adicionais), ela também dá suporte a vetores `3D`.
 
-Outra biblioteca usada nos exemplos é o [canvas-extensions](https://github.com/reu/canvas-extensions), que coloca alguns métodos úteis no `context` do `canvas` do HTML5 (como por exemplo, o método `fillCircle`).
+Outra biblioteca usada nos exemplos é o [canvas-extensions](https://github.com/reu/canvas-extensions), que _embute_ alguns métodos úteis no `context` do `canvas` do HTML5 (como por exemplo, o método `fillCircle`).
