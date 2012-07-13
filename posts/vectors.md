@@ -379,9 +379,9 @@ class Vector
 
 Conhecendo o conceito de _magnitude_ podemos finalmente entender um dos conceitos mais importantes em cálculos vetoriais: a normalização.
 
-Agora, _normalização_ é algo já bem conhecido e aplicado em várias situações. O processo consiste em tornar um valor "normal", ou "padrão". No nosso caso, um vetor "padrão" (chamado de __vetor unitário__) é um vetor que tenha uma magnitude de _valor 1_. Ou seja, pra normalizar nosso vetor, basta reduzirmos (ou aumentarmos em alguns casos) seu _tamanho_ para 1. A parte interessante disso é que como só seu tamanho é alterado, sua __direção__ é mantida intacta!
+Agora, _normalização_ é algo já bem conhecido e aplicado em várias situações. O processo consiste em tornar um valor "normal", ou "padrão". No nosso caso, um vetor "padrão" (chamado de __vetor unitário__) é um vetor que tenha uma magnitude de _valor 1_. Ou seja, pra normalizar nosso vetor, basta reduzirmos (ou aumentarmos em alguns casos) seu _tamanho_ para 1. A parte interessante disso é que como só seu tamanho é alterado, sua __direção é mantida intacta__ (iremos entender o porquê isso é importante em breve).
 
-E como podemos setar o tamanho de um vetor para exatamente `1`? Simples, basta dividirmos cada uma de suas propriedades (no nosso caso, os valores de x e y) pela magnitude do vetor:
+E como podemos ajustar o tamanho de um vetor para exatamente `1`? Simples, basta dividirmos cada uma de suas propriedades (no nosso caso, os valores de x e y) pela magnitude do vetor:
 
 <p style="text-align: center">
   <img alt="Vetor de posição" src="/images/vector-normalization.png" />
