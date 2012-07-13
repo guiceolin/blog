@@ -491,11 +491,9 @@ E o resultado podemos ver no seguinte exemplo:
 
 ### Aceleração aleatória
 
-Esse próximo exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos acelerem ou desacelerem, mas também é usada para _qualquer_ mudança de velocidade, seja essa uma mudança de magnitude (que é o que faz um objeto andar mais rápido ou mais devagar), ou uma __mudança de direção__, já que é muito comum utilizarmos vetores para alterar a _direção_ de objetos. Em artigos futuros iremos estudar os [algorítimos do Craig Reynolds](http://www.red3d.com/cwr/steer/), e todos eles fazem muito uso desse conceito.
 
-Na próxima simulação, vamos pegar por base nosso último exemplo, e altera-lo para que a aceleração seja gerada a cada iteração, e não durante a inicialização do objeto.
 
-Pegando como base o exemplo anterior, iremos modifica-lo para que ele gere uma aceleração diferente a cada iteração do nosso _loop_. Mas antes, para simplificar a implementação, vamos uma função que retorna um número aleatório dentro de um range, já que o javascript não fornece algo do tipo nativamente:
+Vamos usar o exemplo anterior como base e modifica-lo para que ele gere uma aceleração diferente a cada iteração do nosso _loop_. Mas antes, para simplificar a implementação, vamos uma função que retorna um número aleatório dentro de um range, já que o javascript não fornece algo do tipo nativamente:
 
 ```coffeescript
 random = (min, max) -> Math.random() * (max - min) + min
@@ -547,6 +545,8 @@ E o resultado dos dois casos:
 <div id="random_direction" style="float: left"></div>
 <div id="random_acceleration" style="float: right"></div>
 <div style="clear: both"></div>
+
+Esse exemplo é de extrema importância pois mostra que aceleração não é apenas usada para fazer com que objetos acelerem ou desacelerem, mas que também pode ser usada para _qualquer_ mudança de velocidade, seja essa uma mudança de magnitude (que é o que faz um objeto andar mais rápido ou mais devagar), ou uma __mudança de direção__.
 
 ### Aceleração em direção a um ponto
 
