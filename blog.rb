@@ -44,6 +44,11 @@ class Blog < Sinatra::Base
     erb :index, :locals => { :posts => Post.all }
   end
 
+  get "/rss" do
+    cache_control :public, :max_age => 60
+    builder :rss
+  end
+
   get "/:year/:month/:day/:slug" do
     post = Post.find_by_slug(params[:slug]) or raise Sinatra::NotFound
     raise Sinatra::NotFound unless post.published?

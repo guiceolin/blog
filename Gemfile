@@ -8,6 +8,7 @@ gem "pygments.rb"
 gem "babosa"
 gem "compass"
 gem "thin"
+gem "builder"
 
 gem "therubyracer"
 gem "coffee-script"
