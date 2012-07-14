@@ -35,8 +35,12 @@ class Blog < Sinatra::Base
   end
 
   configure :production do
-    use Rack::Cache, :metastore   => Dalli::Client.new(ENV["MEMCACHE_URL"], :username => ENV["MEMCACHE_USERNAME"], :password => ENV["MEMCACHE_PASSWORD"]),
-                     :entitystore => "file:tmp/cache/rack/body"
+    memcache_client = Dalli::Client.new ENV["MEMCACHE_URL"],
+                                        :username => ENV["MEMCACHE_USERNAME"],
+                                        :password => ENV["MEMCACHE_PASSWORD"]
+
+    use Rack::Cache, :entitystore => memcache_client,
+                     :metastore   => memcache_client
   end
 
   get "/" do
