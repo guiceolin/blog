@@ -60,6 +60,8 @@ class Blog < Sinatra::Base
     cache_control :public, :max_age => 60
     etag post.cache_key
 
+    puts "LOLWUT"
+
     erb :post, :locals => { :post => post }
   end
 
