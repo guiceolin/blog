@@ -1,7 +1,7 @@
 class MarkdownRenderer < Redcarpet::Render::HTML
   def initialize(options = {})
     python = ENV["PYGMENTS_PYTHON"] || "python"
-    RubyPython.configure :python_exe => python
+    RubyPython.start :python_exe => python
     super
   end
 

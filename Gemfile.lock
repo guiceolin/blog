@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/reu/pygments.rb.git
+  revision: 3e23fb22d30c9d36036b08611b4057734ca076ee
+  specs:
+    pygments.rb (0.2.13)
+      rubypython (>= 0.5.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -45,8 +52,6 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.7.1)
       slop (>= 2.4.4, < 3)
-    pygments.rb (0.2.13)
-      rubypython (~> 0.5.3)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -63,7 +68,7 @@ GEM
     rspec-expectations (2.11.1)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.11.0)
-    rubypython (0.5.3)
+    rubypython (0.6.2)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
     rubyzip (0.9.9)
@@ -96,10 +101,11 @@ DEPENDENCIES
   foreman
   heroku
   pry
-  pygments.rb
+  pygments.rb!
   rack-cache
   redcarpet
   rspec
+  rubypython (= 0.6.2)
   shotgun
   sinatra
   therubyracer
