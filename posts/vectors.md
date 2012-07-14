@@ -401,7 +401,7 @@ Até agora só vimos os conceitos básicos de vetores mas não fizemos nada prá
 
 Para começar, vamos ver algo muito utilizado em qualquer simulação física: __aceleração__.
 
-Como já vimos, __velocidade__ é a quantidade de variação de posição. A __aceleração__ é a quantidade de variação de __velocidade__. Então podemos dizer que a _aceleração_ afeta a _velocidade_ e essa por sua vez afeta a _posição_. 
+Como já vimos, __velocidade__ é a quantidade de variação de posição. A __aceleração é a quantidade de variação de velocidade__. Então podemos dizer que a _aceleração_ afeta a _velocidade_ e essa por sua vez afeta a _posição_. 
 
 `velocity = velocity + acceleration`   
 `position = position + velocity`
@@ -435,7 +435,7 @@ class Ball
     @acceleration = new Vector(0.005, 0.01)
 ```
 
-Podemos notar que por enquanto as únicas modificações feitas foram zerar a velocidade e adicionar uma nova propriedade para a aceleração. Outro ponto bastante importante de se observar é que a aceleração tem valores _muito_ pequenos, isso é necessário já que a cada iteração do nosso _loop_, iremos somar esses valores na velocidade do círculo, e como temos 60 iterações desse loop por segundo, se o valor for alto, o objeto irá ganhar aceleração muito rapidamente, tirando todo o "efeito" que queremos simular.
+Podemos notar que por enquanto as únicas modificações feitas foram zerar a velocidade e adicionar uma nova propriedade para a aceleração. Outro ponto bastante importante de se observar é que a aceleração tem valores _muito_ pequenos, isso é necessário já que a cada iteração do nosso _loop_, iremos somar esses valores na velocidade do círculo, e como temos 60 iterações desse loop por segundo, se o valor for alto, o objeto irá ganhar aceleração muito rapidamente, tirando todo o "efeito" que queremos visualizar.
 
 Mas continuando, agora vamos alterar o método `update` para adicionar aceleração a nossa velocidade:
 
@@ -491,9 +491,7 @@ E o resultado podemos ver no seguinte exemplo:
 
 ### Aceleração aleatória
 
-
-
-Vamos usar o exemplo anterior como base e modifica-lo para que ele gere uma aceleração diferente a cada iteração do nosso _loop_. Mas antes, para simplificar a implementação, vamos uma função que retorna um número aleatório dentro de um range, já que o javascript não fornece algo do tipo nativamente:
+Vamos usar o exemplo anterior como base e modifica-lo para que ele gere uma aceleração diferente a cada iteração do nosso _loop_. Mas antes, para simplificar a implementação, vamos fazer uma função que retorna um número aleatório dentro de um range, já que o javascript não fornece algo do tipo nativamente:
 
 ```coffeescript
 random = (min, max) -> Math.random() * (max - min) + min
