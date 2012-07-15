@@ -87,7 +87,7 @@ E então podemos usar esse _helper_ nas nossas _views_:
 
 Assim como as bibliotecas _Markdown_, [existem](http://pygments.org/) [várias](http://coderay.rubychan.de/) [opções](http://ultraviolet.rubyforge.org/), tanto _server side_ quanto no _[client side](http://softwaremaniacs.org/soft/highlight/en/)_ para tornar trechos de código tão bonitos quanto em qualquer _IDE_. O problema, é que cada uma dessas bibliotecas tem seus poréns, e escolher qual delas se encaixa melhor em cada caso pode ser um trabalho tedioso o maçante. Exitem até mesmo dois [Railscasts](http://railscasts.com) falando sobre o assunto, [aqui](http://railscasts.com/episodes/207-syntax-highlighting) e [aqui](http://railscasts.com/episodes/207-syntax-highlighting-revised).
 
-Minha primeira opções foi o _CodeRay_ por ser escrito em _Ruby_ e não precisar compilar nenhuma extensão nativa. Em poucos minutos estava tudo funcionando perfeitamente, porém para minha surpresa, eu não havia reperado que ela não suportava _CoffeeScript_, que era basicamente _a única linguagem que utilizei_ no meu [primeiro artigo](http://rnavarro.com.br/2012/07/13/vetores).
+Minha primeira opção foi o _CodeRay_ por ser escrito em _Ruby_ e não precisar compilar nenhuma extensão nativa. Em poucos minutos estava tudo funcionando perfeitamente, porém para minha surpresa, eu não havia reperado que ela não suportava _CoffeeScript_, que era basicamente _a única linguagem que utilizei_ no meu [primeiro artigo](http://rnavarro.com.br/2012/07/13/vetores).
 
 Com essa restrição em mente, sobraram duas opções: o [Pygments](http://pygments.org/) e a [Ultraviolet](http://ultraviolet.rubyforge.org/).
 
