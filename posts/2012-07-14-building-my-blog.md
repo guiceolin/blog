@@ -24,9 +24,9 @@ Não é porque eu não queria usar uma _blog engine_ pronta, que eu queria imple
 
 ## Sass e CoffeeScript
 
-Uma das coisas que mais interessantes do _sinatra_ é como é fácil criar "aplicações dentro de aplicações". Através dessa funcionalidade, eu pude criar duas aplicações separadas, uma que cuida de do _Sass_ e uma que cuida do _CoffeeScript_. Depois apenas _montei_ essas aplicações na classe principal do blog.
+Uma das coisas que mais interessantes do _sinatra_ é como é fácil criar "aplicações dentro de aplicações". Através dessa funcionalidade, eu pude criar duas aplicações separadas, uma que cuida do _Sass_ e uma que cuida do _CoffeeScript_. Depois apenas _montei_ essas aplicações na classe principal do blog.
 
-Por exemplo, a aplicação que converte os arquivos escritos em _CoffeeScript_ para _Javascript_ é esse:
+Por exemplo, a aplicação que converte os arquivos escritos em _CoffeeScript_ para _Javascript_ é essa:
 
 ```ruby
 class CoffeeHandler < Sinatra::Base
