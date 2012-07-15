@@ -155,4 +155,4 @@ Claro, é importante dar os créditos ao _CloudHead_, já que o visual em si foi
 
 Por incrível que pareça, é possível aprender muito fazendo coisas aparentemente triviais (fazer um blog usando _Ruby_ ou _Rails_ é quase que uma piada). Apesar de eu ter experiência com todas as tecnologias citadas aqui, nunca precisei configurar de fato o _Pygments_ (ou faze-lo funcionar no Heroku), ou mesmo compilar _Sass_ ou _CoffeeScript_ sem a ajuda do _Rails_. Claro que são coisas extremamente simples, mas mesmo assim, é conhecimento.
 
-Se tiver alguma curiosidade em outros detalhes da implementação desse blog, basta acessar esse [repositório no Github](http://github.com/reu/blog) (sim, ele é _opensource_).
+Se tiver alguma curiosidade em outros detalhes da implementação desse blog, basta acessar seu [repositório no Github](http://github.com/reu/blog).
