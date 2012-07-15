@@ -38,7 +38,7 @@ class CoffeeHandler < Sinatra::Base
 end
 ```
 
-Basicamente, essa é uma aplicação _sinatra_ contendo a rota ``/coffee/*.js`, que quanda acessada, busca um arquivo coffeescript no diretório que configurado na linha 2. Note que o Sinatra já provê um helper `coffee` nativamente, mas por ser apenas um _helper_, ele precisa de algum compilador coffeescript para que funcione corretamente. No meu caso, utilizei a gem [coffee-script](https://rubygems.org/gems/coffee-script) para compilar os arquivos em conjunto com o [therubyracer](https://rubygems.org/gems/therubyracer) para instalar um environment _javascript_.
+Basicamente, essa é uma aplicação _sinatra_ contendo a rota ``/coffee/*.js`, que quando acessada, busca um arquivo coffeescript no diretório que configurado na linha 2. Note que o Sinatra já provê um helper `coffee` nativamente, mas por ser apenas um _helper_, ele precisa de algum compilador coffeescript para que funcione corretamente. No meu caso, utilizei a gem [coffee-script](https://rubygems.org/gems/coffee-script) para compilar os arquivos em conjunto com o [therubyracer](https://rubygems.org/gems/therubyracer) para instalar um environment _javascript_.
 
 Mas voltando ao código, isso é tudo que foi preciso para _montar_ a aplicação `CoffeeHandler` na classe do meu blog:
 
@@ -93,7 +93,7 @@ Com essa restrição em mente, sobraram duas opções: o [Pygments](http://pygme
 
 Apesar da _Ultraviolet_ parecer uma opção muito boa, acabei optando pela Pygments por ser a mais utilizada mundo a fora. Agora, é _claro_ que essa decisão também teve seus problemas. Na minha máquina de desenvolvimento, tudo rodou perfeitamente, mas infelizmente no [Heroku](http://heroku.com) (o serviço que uso para hospedar o blog), a biblioteca _RubyPython_ (nome bem descritivo) se recusava a funcionar corretamente. Após alguns _googles_, deu pra concluir que era um problema um tanto comum, mas ainda sem nenhuma solução concreta. Por sorte, o _Pygments_ oferece uma [API HTTP](http://pygments.appspot.com/) (how cool is that?), que serviu como um _fallback_ até que o _RubyPython_ esteja funcional no Heroku.
 
-Com tudo isso pronto, bastava agora transformar os trechos de código em texo puro pelo html gerado pelo _Pygments_. Uma maneira muito comum de fazer isso é usando um _Rack Middleware_ que substitui todos os trechos com o markup \<code\> ou \<pre\> da resposta HTTP pelo _output_ do _Pygments_. Por outro lado, como eu estava utilizando o _RedCloth_, preferi apenas sobrescrever o método que trata a estilização de blocos de código do _Markdown_ para utilizar o _Pygments_. A implementação ficou assim:
+Com tudo isso pronto, bastava agora transformar os trechos de código em texto puro pelo html gerado pelo _Pygments_. Uma maneira muito comum de fazer isso é usando um _Rack Middleware_ que substitui todos os trechos com o markup \<code\> ou \<pre\> da resposta HTTP pelo _output_ do _Pygments_. Por outro lado, como eu estava utilizando o _RedCloth_, preferi apenas sobrescrever o método que trata a estilização de blocos de código do _Markdown_ para utilizar o _Pygments_. A implementação ficou assim:
 
 ```ruby
 class MarkdownRenderer < Redcarpet::Render::HTML
