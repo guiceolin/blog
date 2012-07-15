@@ -50,7 +50,7 @@ end
 
 E _voilá_, temos suporte a _CoffeeScript_! Claro que essa implementação não tem nada sofisticado como a pre-compilação que o _asset pipeline_ do _Rails_ fornece. Por hora pelo menos, essa solução está atendendo muito bem.
 
-Para o _Sass_ fiz algo bem semelhante, com a diferença de que como eu estou utilizando o [Compass](http://compass-style.org/), tive que adicionar algumas configurações exclusivas para ele (você pode consultar o arquivo [blog.rb](http://github.com/reu/blog/blog.rb) direto no repositório no Github se desejar conferir a implementação).
+Para o _Sass_ fiz algo bem semelhante, com a diferença de que como eu estou utilizando o [Compass](http://compass-style.org/), tive que adicionar algumas configurações exclusivas para ele (você pode consultar o arquivo [blog.rb](https://github.com/reu/blog/blob/master/blog.rb) direto no repositório no Github se desejar conferir a implementação).
 
 ## Markdown
 
