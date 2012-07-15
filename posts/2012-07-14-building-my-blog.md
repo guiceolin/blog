@@ -12,7 +12,7 @@ Nesse artigo irei mostrar _como_ fiz para montar esse blog, bem como algumas coi
 
 A maior parte dos sistemas de blogs _opensource_ fornecem funcionalidades muito legais que facilitam muito a vida de leigos, como editores _HTML_, área de admnistração, customizações através de plugins, suporte a múltiplos autores e etc. Acontece que para o meu caso, nenhuma dessas _features_ são realmente necessárias, afinal, quem irá escrever os artigos desse blog não é um jornalista ou alguém leigo em desenvolvimento web.
 
-Outro ponto importante para ser citado é que não vejo necessidade de guardar os artigos em algum tipo de banco relacional. Sendo assim, pela simplicidade, optei por escrever os artigos diretamente em aquivos textos convencionais.
+Outro ponto importante para ser citado é que não vejo necessidade de guardar os artigos em algum tipo de banco relacional. Sendo assim optei por escrever os artigos diretamente em aquivos textos convencionais, já que somando isso com o fato de eu utilizar [_git_](http://git-scm.com/), ganhei "gratuitamente" todas as vantagens desse controle de versão para os artigos do blog.
 
 Para a markup escolhi utilizar o [Markdown](http://daringfireball.net/projects/markdown/), escolha também movida principalmente pela sua simplicidade, já que posso escrever os posts utilizando os mesmos editores que uso para codificar. Além disso, ele é um formato muito flexível, onde é possível, por exemplo, utilizar _HTML_ puro no meio do texto quando necessário.
 
