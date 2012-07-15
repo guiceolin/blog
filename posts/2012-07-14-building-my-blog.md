@@ -24,9 +24,9 @@ Não é porque eu não queria usar uma _blog engine_ pronta, que eu queria imple
 
 ## Sass e CoffeeScript
 
-Um das coisas que mais interessantes do _sinatra_ é como é fácil criar e utilizar seus _módulos_. Esses módulos são como aplicações separadas que você pode "juntar" facilmente. Sendo assim, criei um módulo para o _Sass_ e um para o _CoffeeScript_, e depois apenas _montei_ esses módulos na classe principal do blog.
+Uma das coisas que mais interessantes do _sinatra_ é como é fácil criar "aplicações dentro de aplicações". Através dessa funcionalidade, eu pude criar duas aplicações separadas, uma que cuida de do _Sass_ e uma que cuida do _CoffeeScript_. Depois apenas _montei_ essas aplicações na classe principal do blog.
 
-Por exemplo, o módulo que converte os arquivos escritos em _CoffeeScript_ para _Javascript_ é esse:
+Por exemplo, a aplicação que converte os arquivos escritos em _CoffeeScript_ para _Javascript_ é esse:
 
 ```ruby
 class CoffeeHandler < Sinatra::Base
@@ -40,7 +40,7 @@ end
 
 Basicamente, essa é uma aplicação _sinatra_ contendo a rota ``/coffee/*.js`, que quanda acessada, busca um arquivo coffeescript no diretório que configurado na linha 2. Note que o Sinatra já provê um helper `coffee` nativamente, mas por ser apenas um _helper_, ele precisa de algum compilador coffeescript para que funcione corretamente. No meu caso, utilizei a gem [coffee-script](https://rubygems.org/gems/coffee-script) para compilar os arquivos em conjunto com o [therubyracer](https://rubygems.org/gems/therubyracer) para instalar um environment _javascript_.
 
-Mas voltando ao código, isso é tudo que foi preciso para _montar_ o módulo `CoffeeHandler` na classe do meu blog:
+Mas voltando ao código, isso é tudo que foi preciso para _montar_ a aplicação `CoffeeHandler` na classe do meu blog:
 
 ```ruby
 class Blog < Sinatra::Base
