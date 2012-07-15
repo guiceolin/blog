@@ -29,11 +29,6 @@ class Blog < Sinatra::Base
   use CoffeeHandler
   use SassHandler
 
-  configure :development do
-    use Rack::Cache, :verbose => true
-
-  end
-
   configure :production do
     memcache_client = Dalli::Client.new ENV["MEMCACHE_URL"],
                                         :username => ENV["MEMCACHE_USERNAME"],
@@ -59,8 +54,6 @@ class Blog < Sinatra::Base
 
     cache_control :public, :max_age => 60
     etag post.cache_key
-
-    puts "LOLWUT"
 
     erb :post, :locals => { :post => post }
   end
