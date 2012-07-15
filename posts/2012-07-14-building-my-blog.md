@@ -54,7 +54,7 @@ Para o _Sass_ fiz algo bem semelhante, com a diferença de que como eu estou uti
 
 ## Markdown
 
-Existem várias _gems_ que "compilam" o Markdown em _HTML_, optei por utilizar a [RedCarpet](https://github.com/tanoku/redcarpet/) não só pela sua performance, mas principalmente pela facilidade que é customiza-lo. Uma rápida leitura da sua documentação pode dar a ideia do quão flexivel e simples de extender que ele é. Além disso, ele suporta algumas extensões muito úteis, como por exemplo o _fenced code blocks_ (utilizado no [Github](http://github.com/), que permite escrever blocos de código utilizando três "`" ao invés de quatro espaços para escrever código), o _~~strikethrough~~_, e o _autolink_.
+Existem várias _gems_ que "compilam" o Markdown em _HTML_, optei por utilizar a [RedCarpet](https://github.com/tanoku/redcarpet/) não só pela sua performance, mas principalmente pela facilidade que é customiza-lo. Uma rápida leitura da sua documentação pode dar a ideia do quão flexivel e simples de extender ele é. Além disso, ele suporta algumas extensões muito úteis, como por exemplo o _fenced code blocks_ (utilizado no [Github](http://github.com/), que permite escrever blocos de código utilizando três "`" ao invés de quatro espaços), o _~~strikethrough~~_, e o _autolink_.
 
 Intagrar o _RedCarpet_ com o _Sinatra_ foi super simples, tudo que foi preciso foi de um simples _helper_:
 
