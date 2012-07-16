@@ -1,3 +1,9 @@
-<% posts.each do |post| %>
-  <%= erb :post, :locals => { :post => post }, :layout => false %>
-<% end %>
+<h1 class="title" id="site_title">Rodrigo Navarro</h1>
+<ul class="post-list">
+  <% posts.each do |post| %>
+    <li>
+      <span class="date"><%= post.date %></span>
+      <a href="<%= post.path %>"><%= post.title %></a>
+    </li>
+  <% end %>
+</ul>
