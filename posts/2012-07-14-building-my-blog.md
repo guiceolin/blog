@@ -73,14 +73,6 @@ helpers do
 end
 ```
 
-E então podemos usar esse _helper_ nas nossas _views_:
-
-```erb
-<div class="post-content">
-  <%= markdown post.body %>
-</div>
-```
-
 ## Syntax Highlight
 
 É inevitável que um blog que fala sobre _desenvolvimento_ traga trechos código nos artigos. E por mais que as pessoas vejam _programadores_ como pessoas estranhas que escrevem coisas sem sentido em um terminal verde e preto (a lá [Matrix](http://www.imdb.com/title/tt0133093/) ou [outros](http://www.imdb.com/title/tt0244244/) [filmes](http://www.imdb.com/title/tt0337978/) de _hackers_, onde aparentemente não existem monitores coloridos), na vida real, é excencial utilizar algum esquema de cores para programar.
@@ -104,24 +96,6 @@ class MarkdownRenderer < Redcarpet::Render::HTML
       # Post to the Python HTTP API in case we have an error with the Python extensions
       Net::HTTP.post_form(URI.parse("http://pygments.appspot.com/"), "code" => code, "lang" => language).body
     end
-  end
-end
-```
-
-E claro, foi preciso uma pequena alteração no helper `markdown` para que ele utilizasse o novo _renderizador_ para converter o _markdown_:
-
-```ruby
-helpers do
-  def markdown(text)
-    options = {
-      :fenced_code_blocks => true,
-      :strikethrough => true,
-      :autolink => true,
-      :hard_wrap => true
-    }
-
-    # Using the custom MarkdownRenderer we just created
-    Redcarpet::Markdown.new(MarkdownRenderer, options).render(text)
   end
 end
 ```
