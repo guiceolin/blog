@@ -8,31 +8,28 @@
     <link rel="stylesheet" type="text/css" href="/railscasts2.css" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-33388712-1']);
-      _gaq.push(['_setDomainName', 'rnavarro.com.br']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
   </head>
   <body>
-    <header>
-      <a href="/" class="site-title">ceol.in</a>
-      <ul>
-        <li><a href="mailto:gui@ceol.in">email</a></li>
-        <li><a href="http://github.com/guiceolin">github</a></li>
-        <li><a href="http://twitter.com/guiceolin">twitter</a></li>
-        <li><a href="http://feeds.feedburner.com/blog.ceol.in"><img src="/images/rss.png" /></a></li>
+    <section id='content'>
+      <header>
+      <h1 class="title" id="site_title">GuiCeolin</h1>
+      <ul id="links">
+        <li>
+        <a href="mailto:gui@ceol.in" target="_blank"><img src="/images/gmail.png" /></a>
+        </li>
+        <li>
+        <a href="http://github.com/guiceolin" target="_blank"><img src="/images/github.png" /></a>
+        </li>
+        <li>
+        <a href="http://twitter.com/guiceolin" target="_blank"><img src="/images/twitter.png" /></a>
+        </li>
+        <li>
+        <a href="http://feeds.feedburner.com/blog.ceol.in" target="_blank"><img src="/images/rss.png" /></a>
+        </li>
       </ul>
-    </header>
-    <section id="content">
-      <%= yield %>
+      </header>
+      <section id="list">
+        <%= yield %>
+      </section>
     </section>
-  </body>
-</html>
+  </html>

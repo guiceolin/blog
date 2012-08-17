@@ -1,142 +1,30 @@
 @import "compass/css3"
 
 body
-  margin: 0 auto
-  font:
-    family: Georgia, Times, serif
-    size: 21px
-  line-height: 1.8em
-  padding: 15px
-  width: 900px
+  background-image: url('images/BG.jpg')
+  section#content
+    margin: 0 auto
+    width: 85%
+    font:
+      family: Georgia, Times, serif
+      size: 20pt
+    line-height: 1.8em
+    header
+      //background: rgba( 255,255,255, 0.8)
+      padding: 20px
+      ul#links
+        margin: 0
+        padding: 5px
+        float: right
+        li
+          margin: 0
+          img
+            width: 32px
+            height: auto
 
-a
-  color: #b83000
-
-  &:hover
-    color: #000
-
-code
-  font-family: menlo, consolas, 'lucida console', monaco, 'courier new', monospace
-  color: #007A00
-  padding: 2px 4px
-
-.title
-  font-family: georgia, 'bitstream vera sans serif', 'lucida grande', helvetica, verdana, sans-serif
-  text-align: center
-
-  a
-    text-decoration: none
-    color: #000
-
-#site_title
-  font-size: 86px
-  margin-top: 75px
-  margin-bottom: 120px
-
-.date
-  color: #A3A3A3
-  font-variation: small-caps
-  font-family: 'lucida grande', 'helvetica neue', helvetica, sans-serif
-  font-size: 20px
-  text-align: center
-
-.post-list
-  padding: 0
-  margin-top: 60px
-
-  list-style: none
-
-  font-size: 28px
-
-  .date
-    font-size: 16px
-    margin-right: 28px
-
-  li
-    margin-bottom: 2px
-
-h1, h2, h3, h4
-  font:
-    family: 'Myriad Pro', 'Droid Serif', 'Georgia', serif
-    weight: normal
-
-header
-  text-align: right
-
-  a
-    text-decoration: none
-    color: #ddd
-
-    &:hover
-      border-bottom: 1px dotted #bbb
-      color: #b83000
-
-  .site-title
-    float: left
-
-  ul
-    font-family: 'Myriad Pro', Arial, sans-serif
-
-    li
-      list-style-type: none
-      display: inline
-      margin: 0 15px
-
-article.post
-  margin-top: 60px
-
-  .post-content
-    margin-top: 50px
-
-  h1, h2, h3, h4
-    margin-top: 50px
-    margin-bottom: 24px
-    color: #000
-
-  h3
-    margin-top: 24px
-    margin-bottom: 20px
-
-  .date
-    color: #444
-
-  pre
-    font-size: 14px
-    line-height: 1.5em
-    font-family: menlo, consolas, 'lucida console', monaco, 'courier new', monospace
-    overflow: auto
-    +border-radius(4px)
-
-    // border: 1px solid #CCC
-    // background-color: #F8F8F8
-    // padding: 18px
-    background-color: #2B2B2B
-    padding: 14px
-
-  .title
-    font-size: 62px
-    font-family: georgia, 'bitstream vera sans serif', 'lucida grande', helvetica, verdana, sans-serif
-    text-align: center
-    margin-top: 10px
-
-    a
-      text-decoration: none
-      color: #000
-
-  .highlight
-    margin-top: 24px
-
-  h2
-    font-size: 40px
-
-  h3
-    font-size: 28px
-
-  p
-    margin-top: 20px
-
-#first_example
-  width: 190px
-  height: 190px
-  margin-left: 15px
-  float: right
+      h1#site_title
+        text-align: center
+        text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black
+        color: white
+        font:
+          size: 100pt
