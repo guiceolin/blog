@@ -2,29 +2,32 @@
 
 body
   background-image: url('images/BG.jpg')
-  section#content
-    margin: 0 auto
-    width: 85%
-    font:
-      family: Georgia, Times, serif
-      size: 20pt
-    line-height: 1.8em
-    header
-      //background: rgba( 255,255,255, 0.8)
-      padding: 20px
-      ul#links
+  background-attachment: fixed
+  font:
+    family: Georgia, Times, serif
+    size: 20pt
+  line-height: 1.8em
+  header
+    //background: rgba( 255,255,255, 0.8)
+    padding-top: 20px
+    ul#links
+      margin: 0
+      margin-left: 70%
+      display: inline
+      li
+        display: inline
         margin: 0
-        padding: 5px
-        float: right
-        li
-          margin: 0
-          img
-            width: 32px
-            height: auto
+        img
+          width: 32px
+          height: auto
 
-      h1#site_title
-        text-align: center
-        text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black
-        color: white
-        font:
-          size: 100pt
+    h1#site_title
+      text-align: center
+      text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black
+      color: white
+      font:
+        size: 100pt
+  section#list
+    background-color: white
+    ul.post-list
+      margin: 0
