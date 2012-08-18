@@ -10,7 +10,7 @@ gem "babosa"
 gem "compass"
 gem "thin"
 gem "builder"
-
+gem "nokogiri"
 gem "therubyracer"
 gem "coffee-script"
 

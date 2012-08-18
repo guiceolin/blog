@@ -72,7 +72,12 @@ class Blog < Sinatra::Base
         :hard_wrap => true
       }
 
-      Redcarpet::Markdown.new(MarkdownRenderer, options).render(text)
+      @renderer ||= Redcarpet::Markdown.new(MarkdownRenderer, options)
+      @renderer.render(text)
+    end
+
+    def introduction(post)
+      Nokogiri::XML(markdown(post.body)).at_xpath("/p").content
     end
   end
 end
