@@ -3,6 +3,9 @@
     <li>
     <span class="date"><%= post.date %></span>
     <a href="<%= post.path %>"><%= post.title %></a>
+    <section id="resume">
+      <%= introduction post %>
+    </section>
     </li>
   <% end %>
 </ul>
