@@ -1,9 +1,9 @@
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
-  xml.title "Rodrigo Navarro"
-  xml.id "http://blog.rnavarro.com.br"
+  xml.title "GuiCeolin"
+  xml.id "http://blog.Ceol.in"
   xml.updated Post.published.first.date.iso8601
-  xml.author { xml.name "Rodrigo Navarro" }
+  xml.author { xml.name "Guilherme Ceolin" }
 
   Post.published.each do |post|
     xml.entry do
