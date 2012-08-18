@@ -3,6 +3,10 @@ author: Guilherme Ceolin
 date: 2012-08-10
 slug: test
 
-Esste é um post do blog. vou usar ele como teste de layout.
+Este é um post do blog. vou usar ele como teste de layout.
+
+Este seria o segundo paragrafo.
+
+foda-se.
 
 
