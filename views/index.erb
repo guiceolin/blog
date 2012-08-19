@@ -1,11 +1,14 @@
 <ul class="post-list">
-  <% posts.each do |post| %>
-    <li>
-    <a class="post-title" href="<%= post.path %>"><p><strong><%= post.title %></strong></p></a>
-    <p id="resume">
-      <%= introduction post %>
-    </p>
-    <span class="date"><%= post.date %></span>
+  <% posts.each_with_index do |post, index| %>
+    <li class=<%= (index % 2) == 0 ? "even" : "odd"%>>
+      <a class="post-title" href="<%= post.path %>"><p><strong><%= post.title %></strong></p></a>
+      <p class="resume">
+        <%= introduction post %>
+      </p>
+      <p class="date">
+        Publicado em:
+        <span class="date"><%= post.date %></span>
+      </p>
     </li>
   <% end %>
 </ul>
