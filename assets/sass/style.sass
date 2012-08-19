@@ -3,6 +3,7 @@
 body
   background-image: url('images/BG.jpg')
   background-attachment: fixed
+  background-size: cover
   font:
     family: Georgia, Times, serif
     size: 20pt
@@ -58,6 +59,12 @@ body
             font-size: 24pt
             padding-top: 5px
             border-bottom: 1px solid white
+        section.resume
+          font-size: 16pt
+          background-color: rgba(255,255,255, 0.2)
+          padding: 15px
+          margin-top: 15px
+          @include border-radius(5px)
         p.resume
           font-size: 16pt
         p.date
