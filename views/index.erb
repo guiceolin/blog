@@ -1,11 +1,11 @@
 <ul class="post-list">
   <% posts.each do |post| %>
     <li>
-    <span class="date"><%= post.date %></span>
-    <a href="<%= post.path %>"><%= post.title %></a>
-    <section id="resume">
+    <a class="post-title" href="<%= post.path %>"><p><strong><%= post.title %></strong></p></a>
+    <p id="resume">
       <%= introduction post %>
-    </section>
+    </p>
+    <span class="date"><%= post.date %></span>
     </li>
   <% end %>
 </ul>

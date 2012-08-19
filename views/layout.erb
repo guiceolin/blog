@@ -10,26 +10,26 @@
     <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
   </head>
   <body>
-    <section id='content'>
-      <header>
+    <header>
       <h1 class="title" id="site_title">GuiCeolin</h1>
-      <ul id="links">
-        <li>
-        <a href="mailto:gui@ceol.in" target="_blank"><img src="/images/gmail.png" /></a>
-        </li>
-        <li>
-        <a href="http://github.com/guiceolin" target="_blank"><img src="/images/github.png" /></a>
-        </li>
-        <li>
-        <a href="http://twitter.com/guiceolin" target="_blank"><img src="/images/twitter.png" /></a>
-        </li>
-        <li>
-        <a href="http://feeds.feedburner.com/blog.ceol.in" target="_blank"><img src="/images/rss.png" /></a>
-        </li>
-      </ul>
-      </header>
-      <section id="list">
-        <%= yield %>
-      </section>
+    </header>
+    <section id="nav-bar">
+    <ul id="links">
+      <li>
+      <a href="mailto:gui@ceol.in" target="_blank"><img src="/images/gmail.png" /></a>
+      </li>
+      <li>
+      <a href="http://github.com/guiceolin" target="_blank"><img src="/images/github.png" /></a>
+      </li>
+      <li>
+      <a href="http://twitter.com/guiceolin" target="_blank"><img src="/images/twitter.png" /></a>
+      </li>
+      <li>
+      <a href="http://feeds.feedburner.com/GuiCeolin" target="_blank"><img src="/images/rss.png" /></a>
+      </li>
+    </ul>
+    </section>
+    <section id="content">
+      <%= yield %>
     </section>
   </html>

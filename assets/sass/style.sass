@@ -8,8 +8,15 @@ body
     size: 20pt
   line-height: 1.8em
   header
-    //background: rgba( 255,255,255, 0.8)
     padding-top: 20px
+    h1#site_title
+      text-align: center
+      text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black
+      color: white
+      font:
+        size: 100pt
+
+  section#nav-bar
     ul#links
       margin: 0
       margin-left: 70%
@@ -21,13 +28,24 @@ body
           width: 32px
           height: auto
 
-    h1#site_title
-      text-align: center
-      text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black
-      color: white
-      font:
-        size: 100pt
-  section#list
+  section#content
+    width: 95%
+    margin: 0 auto
     background-color: white
     ul.post-list
-      margin: 0
+      padding: 0 30px 0 30px
+      list-style-type: none
+      li
+        a.post-title
+          text-decoration: none
+          &:visited
+            text-decoration:none
+          &:hover
+            text-decoration:none
+          &:active
+            text-decoration:none
+          p
+            margin: 0
+            font-size: 30pt
+            padding-top: 5px
+            border-bottom: 5px dashed black

@@ -7,6 +7,3 @@ Este é um post do blog. vou usar ele como teste de layout.
 
 Este seria o segundo paragrafo.
 
-foda-se.
-
-
