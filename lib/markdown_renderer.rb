@@ -1,10 +1,4 @@
 class MarkdownRenderer < Redcarpet::Render::HTML
-  def initialize(*args)
-    python = ENV["PYGMENTS_PYTHON"] || "python"
-    RubyPython.start :python_exe => python
-    super
-  end
-
   def block_code(code, language)
     begin
       Pygments.highlight code, :lexer => language, :options => { :encoding => "utf-8" }
