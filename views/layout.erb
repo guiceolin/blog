@@ -13,24 +13,26 @@
     <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
   </head>
   <body>
-    <header>
-      <h1 class="title" id="site_title">GuiCeolin</h1>
-    </header>
-    <section id="nav-bar">
-    <ul id="links">
-      <li>
-      <a href="mailto:gui@ceol.in" target="_blank"><img src="/images/gmail.png" /></a>
-      </li>
-      <li>
-      <a href="http://github.com/guiceolin" target="_blank"><img src="/images/github.png" /></a>
-      </li>
-      <li>
-      <a href="http://twitter.com/guiceolin" target="_blank"><img src="/images/twitter.png" /></a>
-      </li>
-      <li>
-      <a href="http://feeds.feedburner.com/GuiCeolin" target="_blank"><img src="/images/rss.png" /></a>
-      </li>
-    </ul>
+    <section id='title'>
+      <header>
+        <h1 class="title" id="blog-title">Ceol.in</h1>
+      </header>
+      <nav>
+        <ul id="links">
+          <li>
+            <a href="mailto:gui@ceol.in" target="_blank"><img src="/images/gmail.png" alt='Email' /></a>
+          </li>
+          <li>
+          <a href="http://github.com/guiceolin" target="_blank"><img src="/images/github.png" alt='Github' /></a>
+          </li>
+          <li>
+          <a href="http://twitter.com/guiceolin" target="_blank"><img src="/images/twitter.png" alt='Twitter' /></a>
+          </li>
+          <li>
+          <a href="http://feeds.feedburner.com/GuiCeolin" target="_blank"><img src="/images/rss.png" alt='RSS'/></a>
+          </li>
+        </ul>
+      </nav>
     </section>
     <section id="content">
       <%= yield %>

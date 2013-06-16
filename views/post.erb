@@ -1,11 +1,16 @@
 <article class="post">
-  <h1 class="title">
-    <a href="<%= post.path %>"><%= post.title %></a>
-  </h1>
-  <p class="date">
-    <%= post.date %>
-  </p>
-  <div class="post-content">
+  <header>
+    <h1>
+      <a href="<%= post.path %>"><%= post.title %></a>
+    </h1>
+  </header>
+  <section id="post-content">
     <%= markdown post.body %>
-  </div>
+  </section>
+  <footer>
+    <p class="date">
+      Publicado em:
+    <span class="date"><%= post.date %></span>
+  </p>
+  </footer>
 </article>

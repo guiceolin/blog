@@ -1,74 +1,106 @@
 @import "compass/css3"
 
-body
-  background-image: url('images/BG.jpg')
-  background-attachment: fixed
-  background-size: cover
-  font:
-    family: Georgia, Times, serif
-    size: 20pt
-  line-height: 1.8em
-  header
-    padding-top: 20px
-    h1#site_title
-      text-align: center
-      text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black
-      color: white
-      font:
-        size: 100pt
+*
+  box-sizing: border-box
 
-  section#nav-bar
-    ul#links
-      margin: 0
-      margin-left: 70%
-      display: inline
-      li
+body
+  background-color: rgb(241,241,241)
+
+  // Layout
+  section#title
+    header
+      height: 150px
+      h1#blog-title
+        margin: 75px auto
+        text-align: center
+        text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black
+        color: white
+        font:
+          size: 100pt
+    nav
+      z-index: 1001
+      top: 10px
+      right: 15px
+      position: fixed
+
+      ul#links
         display: inline
-        margin: 0
-        img
-          width: 32px
-          height: auto
+        li
+          display: inline
+          img
+            width: 32px
+            height: auto
 
   section#content
-    width: 85%
+    // index
     margin: 0 auto
+    width: 85%
+    padding-bottom: 30px
+    margin-bottom: 30px
+    background-color: white
     ul.post-list
-      padding: 0
       list-style-type: none
       li.even
-        background-color: rgb(165,178,228)
+        //background-color: rgb(165,178,228)
       li.odd
-        background-color: rgb(204,176,217)
-        //rgba(165,178,228, 0.95)
+        //background-color: rgb(204,176,217)
       li
-        @include border-radius(5px)
-        color: black
-        padding: 0 30px 0 30px
-        margin-bottom: 30px
-        a.post-title
-          text-decoration: none
-          &:visited
-            text-decoration:none
-          &:hover
-            text-decoration:none
-          &:active
-            text-decoration:none
-          p
-            color: black
-            margin: 0
-            font-size: 24pt
-            padding-top: 5px
-            border-bottom: 1px solid white
-        section.resume
-          font-size: 16pt
-          background-color: rgba(255,255,255, 0.2)
-          padding: 15px
-          margin-top: 15px
-          @include border-radius(5px)
-        p.resume
-          font-size: 16pt
-        p.date
-          text-decoration: underline
-          text-align: right
-          color: gray
-          font-size: 10pt
+        margin: 0 auto
+        width: 95%
+        border-bottom: 3px solid black
+        article
+          padding: 0 20px 0 20px
+          header
+            font-size: 36pt
+            padding-top: 10px
+            //border-bottom: 1px solid #08c
+            h2
+              margin-bottom: 0
+              a.post-title
+                text-decoration: underline
+                color: #08c
+                &:visited
+                &:hover
+                  color: black
+                &:active
+                  text-decoration: none
+          section.resume
+            padding: 10px 0 10px 0
+            margin-top: 5px
+            font-size: 16pt
+            //background-color: rgba(255,255,255, 0.8)
+          footer
+            p.date
+              text-decoration: underline
+              text-align: right
+              color: gray
+              font-size: 10pt
+
+    article.post
+      @include border-radius(5px)
+      color: black
+      padding: 0 20px 0 20px
+      background-color: white
+      header
+        font-size: 36pt
+        padding-top: 10px
+        h1
+          margin-bottom: 0
+          a
+            color: #08c
+            text-decoration: underline
+            &:hover
+              color: black
+      section#post-content
+        padding: 15px 0 10px 0
+        font-size: 16pt
+        line-height: 1.5em
+        p
+          margin:
+            top: 20px
+            bottom: 20px
+      p.date
+        text-decoration: underline
+        text-align: right
+        color: gray
+        font-size: 10pt

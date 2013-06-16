@@ -1,14 +1,22 @@
 <ul class="post-list">
   <% posts.each_with_index do |post, index| %>
     <li class=<%= (index % 2) == 0 ? "even" : "odd"%>>
-      <a class="post-title" href="<%= post.path %>"><p><strong><%= post.title %></strong></p></a>
-      <section class="resume">
-        <%= markdown post.body %>
-      </section>
-      <p class="date">
-        Publicado em:
-        <span class="date"><%= post.date %></span>
-      </p>
+      <article>
+        <header>
+          <h2>
+            <a class="post-title" href="<%= post.path %>"><strong><%= post.title %></strong></a>
+          </h2>
+        </header>
+        <section class="resume">
+          <%= introduction post %>
+        </section>
+        <footer>
+          <p class="date">
+            Publicado em:
+            <span class="date"><%= post.date %></span>
+          </p>
+        </footer>
+      </article>
     </li>
   <% end %>
 </ul>
