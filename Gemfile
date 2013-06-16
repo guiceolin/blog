@@ -1,7 +1,9 @@
 source "https://rubygems.org"
 
+gem "i18n"
 gem "foreman"
 gem "sinatra"
+gem "sinatra-contrib"
 gem "rack-cache"
 gem "redcarpet"
 gem "pygments.rb"

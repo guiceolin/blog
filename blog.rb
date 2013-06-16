@@ -1,3 +1,4 @@
+require 'sinatra/cookies'
 class CoffeeHandler < Sinatra::Base
   set :views, File.join(File.dirname(__FILE__), "assets", "coffee")
 
@@ -24,6 +25,9 @@ class SassHandler < Sinatra::Base
 end
 
 class Blog < Sinatra::Base
+  helpers Sinatra::Cookies
+
+  I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'locales', '*.yml').to_s]
   enable :logging
 
   use CoffeeHandler
@@ -36,6 +40,11 @@ class Blog < Sinatra::Base
 
     use Rack::Cache, :entitystore => memcache_client,
                      :metastore   => memcache_client
+  end
+
+  get "/language/:lang" do
+    response.set_cookie 'lang', value: params[:lang], path: '/', expires_at: 'session'
+    redirect to('/')
   end
 
   get "/" do
@@ -78,6 +87,18 @@ class Blog < Sinatra::Base
 
     def introduction(post)
       Nokogiri::XML(markdown(post.body)).at_xpath("/p").content
+    end
+
+    def get_locale
+      cookies[:lang] || "pt"
+    end
+
+    def t(term, options={})
+      I18n.t(term, options.merge!(locale: get_locale))
+    end
+
+    def l(datetime, options={})
+      I18n.l(datetime, options.merge!(locale: get_locale))
     end
   end
 end

@@ -20,6 +20,13 @@
       <nav>
         <ul id="links">
           <li>
+            <% if get_locale == 'en' %>
+              <a href="/language/pt"><img src='/images/br.png' alt='Portugues'></a>
+            <% else %>
+              <a href="/language/en"><img src='/images/us.png' alt='English'></a>
+            <% end %>
+          </li>
+          <li>
             <a href="mailto:gui@ceol.in" target="_blank"><img src="/images/gmail.png" alt='Email' /></a>
           </li>
           <li>
