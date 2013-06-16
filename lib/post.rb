@@ -1,5 +1,6 @@
 require "date"
 require "digest/sha1"
+require "yaml"
 
 class Post
   extend Enumerable
