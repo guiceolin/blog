@@ -3,8 +3,7 @@ require "bundler"
 
 Bundler.require(:default, ENV["RACK_ENV"])
 
-require "./lib/markdown_renderer"
-require "./lib/post"
+Dir[File.dirname(__FILE__) + '/lib/**/*.rb'].each {|file| require file }
 require "./blog"
 
 run Blog
