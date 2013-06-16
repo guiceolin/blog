@@ -1,6 +1,6 @@
 title: Hello World
 author: Guilherme Ceolin
-date: 2013-6-16
+date: 2013-06-16
 slug: Hello World
 
 Então eu começei um blog.
