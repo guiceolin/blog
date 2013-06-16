@@ -6,6 +6,7 @@ module Blog
 
     use Blog::CoffeeHandler
     use Blog::SassHandler
+    use Blog::LanguageHandler
 
     I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'locales', '*.yml').to_s]
 
@@ -21,10 +22,6 @@ module Blog
                        :metastore   => memcache_client
     end
 
-    get "/language/:lang" do
-      response.set_cookie 'lang', value: params[:lang], path: '/', expires_at: 'session'
-      redirect to('/')
-    end
 
     get "/" do
       cache_control :public, :max_age => 60
