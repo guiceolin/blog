@@ -11,10 +11,7 @@
           <%= introduction post %>
         </section>
         <footer>
-          <p class="date">
-          <%= t 'published_at' %>:
-            <span class="date"><%= l post.date %></span>
-          </p>
+          <%= published_at post.date %>
         </footer>
       </article>
     </li>
