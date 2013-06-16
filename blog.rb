@@ -7,11 +7,11 @@ module Blog
     use Blog::CoffeeHandler
     use Blog::SassHandler
     use Blog::LanguageHandler
+    use Blog::RssHandler
 
     I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'locales', '*.yml').to_s]
 
     enable :logging
-
 
     configure :production do
       memcache_client = Dalli::Client.new ENV["MEMCACHE_URL"],
@@ -22,18 +22,12 @@ module Blog
                        :metastore   => memcache_client
     end
 
-
     get "/" do
       cache_control :public, :max_age => 60
       erb :index, :locals => { :posts => Post.all }
     end
 
-    get "/rss" do
-      cache_control :public, :max_age => 60
-      builder :rss
-    end
-
-    get "/:year/:month/:day/:slug" do
+   get "/:year/:month/:day/:slug" do
       post = Post.find_by_slug(params[:slug]) or raise Sinatra::NotFound
       raise Sinatra::NotFound unless post.published?
 
