@@ -9,6 +9,9 @@
         </header>
         <section class="resume">
           <%= introduction post %>
+          <p class='see-more'>
+            <a href="<%= post.path %>"><%= t :continue_reading %></a>
+          </p>
         </section>
         <footer>
           <%= published_at post.date %>
