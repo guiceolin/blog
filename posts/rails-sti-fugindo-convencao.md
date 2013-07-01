@@ -1,6 +1,8 @@
 title: "Rails STI: Fugindo da convenção"
 author: Guilherme Ceolin
+date: 3012-06-30
 slug: rails-sti-fugindo-convencao
+
 
 O suporte a STI ([Single Table Inheritance](http://http://en.wikipedia.org/wiki/Single_Table_Inheritance)), assim como tudo no rails, segue uma convenção. Mas e quando precisamos sair dela?
 
