@@ -1,6 +1,6 @@
 title: "Rails STI: Fugindo da convenção"
 author: Guilherme Ceolin
-date: 3012-06-30
+date: 2013-06-30
 slug: rails-sti-fugindo-convencao
 
 
