@@ -3,7 +3,7 @@ author: Guilherme Ceolin
 date: 2013-12-15
 slug: rails-bower-awesome
 
-Gerenciar dependencias de front-end com Rails não é facil.</ br>
+Gerenciar dependencias de front-end com Rails não é facil.<br />
 Se você quer colocar, por exemplo, o twitter bootstrap na sua app, normalmente há duas alternativas:
 
 * Usar uma gem que o encapsule, e [existem](https://github.com/seyhunak/twitter-bootstrap-rails) [várias](https://github.com/anjlab/bootstrap-rails);
